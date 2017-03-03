@@ -119,11 +119,13 @@ public class Menu_inicio extends javax.swing.JFrame {
     private void bt_iniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         Menu_InicioSesion nw = new Menu_InicioSesion();//aca creo un objeto de la clase inicio_sesion
         nw.setVisible(true);//esto hace que al dar click en el boton iniciar sesion, se abra la ventana inicio_sesion
+        this.dispose();//esto hace que al apretar el boton, se cierre el programa
     }                                                
 
     private void bt_crearPlayerActionPerformed(java.awt.event.ActionEvent evt) {                                               
         MainProyecto.crear.setVisible(true);//esto hace que al dar click en el boton crear player aparezca la ventana de crearPlayer
         this.setVisible(false);//esto hace que al dar click en crear player, se cierre esta ventana de Menu_Inicio
+        
     }                                              
 
     /**
@@ -171,3 +173,4 @@ public class Menu_inicio extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jPopupMenu1;
     // End of variables declaration                   
 }
+

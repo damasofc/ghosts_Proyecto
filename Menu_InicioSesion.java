@@ -8,7 +8,8 @@ import javax.swing.JOptionPane;
 
 
 public class Menu_InicioSesion extends javax.swing.JFrame {
-
+    public static String  UsuarioActivo;
+    public static String contra;
 
     public Menu_InicioSesion() {
         initComponents();
@@ -88,22 +89,32 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
-    private void bt_entrarActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void bt_entrarActionPerformed(java.awt.event.ActionEvent evt) {   
+        
 //*********Aca se comprueba si el usuario y contrasena ingresadas son de algun usuario almacenado*******8888
         boolean comprobar = MainProyecto.comprobarUsuarioIni(jtf_usuario.getText(), psw_contra.getText());
 //********aca comprueba si es true y el usuario ingreso bien la contrasena y el usuario entncs muestra un mensaje que dice que inicio sesion      
         if(comprobar == true){
+            this.dispose();//esto hace que al apretar el boton, se cierre el programa
             JOptionPane.showMessageDialog(null,"Has iniciado sesion","Excelente",JOptionPane.INFORMATION_MESSAGE);
+             Menu_principal mp = new Menu_principal();//aca creo un objeto de la clase inicio_sesion
+        mp.setVisible(true);
+        UsuarioActivo = jtf_usuario.getText();
+        contra = psw_contra.getText();
         }
         //******** y en caso de que ingreso mal algunos de los 2 datos, entonces dice invalido
         else if(comprobar == false){
                 JOptionPane.showMessageDialog(null,"Usuario o contraseña invalidos","Error",JOptionPane.ERROR_MESSAGE);
 
        }
+         
+       this.dispose();//esto hace que al apretar el boton, se cierre el programa
         //******estos 2 de aca abajo hacen que luego de ingresar los datos y luego que haya ingresado el nuevo usuario entonces borre lo escrito en los textfiel
        jtf_usuario.setText("");
        psw_contra.setText("");
-    }                                         
+       
+    }   
+    
 
     /**
      * @param args the command line arguments

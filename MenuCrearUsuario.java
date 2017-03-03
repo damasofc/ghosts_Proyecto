@@ -1,4 +1,3 @@
-
 package ghosts_Proyecto;
 
 import javax.swing.JOptionPane;

@@ -11,6 +11,8 @@ public class MainProyecto {
     public static MenuCrearUsuario crear = new MenuCrearUsuario();//creo un objeto de la clase MenuCrearUusario
     private static int contador;// es un contador que se usa mas abajo....
     public static Menu_inicio m = new Menu_inicio();// crea un objeto de la clase Menu_inicio
+    
+    
 
     public static void main(String[] args) {
         usuarios = new Usuario[100];//aca instancio el arreglo que cree arriba y le asigno hasta cuantos usuarios podra almacenar
@@ -55,5 +57,11 @@ public class MainProyecto {
         }
         return k;
 
+    }
+    int cantGhosts;
+    public static JuegoTablero nm = new JuegoTablero();
+    public static int randomio(int max){
+        int numAleatorio = (int) (Math.random() * max) + 1;
+        return numAleatorio;
     }
 }
