@@ -89,7 +89,7 @@ public class Menu_principal extends javax.swing.JFrame {
                             .addComponent(jb_Configuracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jb_Reportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jb_Miperfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jb_juega, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(jb_juega, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))
                         .addGap(39, 39, 39))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(150, 150, 150)
@@ -151,7 +151,8 @@ this.dispose();//aca se cierra esta ventana actual
     }//GEN-LAST:event_jb_juegaActionPerformed
 
     private void jb_JugarGhostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_JugarGhostActionPerformed
-        MainProyecto.nm.setVisible(true);
+        Player_2 p2=new Player_2();
+        p2.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jb_JugarGhostActionPerformed
 

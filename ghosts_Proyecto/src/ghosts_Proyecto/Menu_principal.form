@@ -87,6 +87,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Jugar Ghost"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_JugarGhostActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jb_Configuracion">
       <Properties>
@@ -130,4 +133,3 @@
     </Component>
   </SubComponents>
 </Form>
-
