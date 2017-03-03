@@ -36,7 +36,7 @@
                           <Component id="jb_Configuracion" alignment="0" max="32767" attributes="0"/>
                           <Component id="jb_Reportes" alignment="0" max="32767" attributes="0"/>
                           <Component id="jb_Miperfil" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jb_juega" alignment="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="jb_juega" alignment="0" pref="107" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   </Group>
@@ -87,9 +87,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Jugar Ghost"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_JugarGhostActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jb_Configuracion">
       <Properties>
@@ -133,3 +130,4 @@
     </Component>
   </SubComponents>
 </Form>
+
