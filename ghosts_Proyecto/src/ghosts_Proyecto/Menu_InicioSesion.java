@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 
 public class Menu_InicioSesion extends javax.swing.JFrame {
-    public static String  UsuarioActivo;
+    public static Usuario  UsuarioActivo;
     public static String contra;
 
     public Menu_InicioSesion() {
@@ -97,8 +97,7 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Has iniciado sesion","Excelente",JOptionPane.INFORMATION_MESSAGE);
             Menu_principal mp = new Menu_principal();//aca creo un objeto de la clase inicio_sesion
         mp.setVisible(true);
-        UsuarioActivo = jtf_usuario.getText();
-        contra = psw_contra.getText();
+        UsuarioActivo = MainProyecto.usuarios[MainProyecto.posicionUsuario];
         }
         //******** y en caso de que ingreso mal algunos de los 2 datos, entonces dice invalido
         else if(comprobar == false){
