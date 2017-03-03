@@ -6,7 +6,7 @@ package ghosts_Proyecto;
 
 
 public class MainProyecto {
-
+//comentario
     public static Usuario usuarios[];//el arreglo donde se almacenaran los nombres de usuarios
     public static MenuCrearUsuario crear = new MenuCrearUsuario();//creo un objeto de la clase MenuCrearUusario
     private static int contador;// es un contador que se usa mas abajo....
