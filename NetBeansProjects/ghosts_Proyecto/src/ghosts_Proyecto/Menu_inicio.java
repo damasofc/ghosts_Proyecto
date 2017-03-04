@@ -42,7 +42,7 @@ public class Menu_inicio extends javax.swing.JFrame {
                 bt_iniciarSesionActionPerformed(evt);
             }
         });
-        jPanel1.add(bt_iniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));
+        jPanel1.add(bt_iniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, -1));
 
         bt_crearPlayer.setText("Crear Player");
         bt_crearPlayer.addActionListener(new java.awt.event.ActionListener() {
@@ -50,7 +50,7 @@ public class Menu_inicio extends javax.swing.JFrame {
                 bt_crearPlayerActionPerformed(evt);
             }
         });
-        jPanel1.add(bt_crearPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 130, -1));
+        jPanel1.add(bt_crearPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 130, -1));
 
         bt_salir.setText("Salir");
         bt_salir.addActionListener(new java.awt.event.ActionListener() {
