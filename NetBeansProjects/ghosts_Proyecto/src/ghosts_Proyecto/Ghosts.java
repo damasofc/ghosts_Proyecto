@@ -13,7 +13,7 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
+//coments
 public class Ghosts extends JLabel implements MouseListener{
     int tipoFantasma;//esta variable guardara 1 o 2, si es 2 es un fantasma bueno, si es 1 es un fantasma malo
     String tipFantas;
