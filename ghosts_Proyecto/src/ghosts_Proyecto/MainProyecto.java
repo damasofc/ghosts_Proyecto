@@ -61,10 +61,4 @@ public class MainProyecto {
         return k;
 
     }
-    int cantGhosts;
-    public static JuegoTablero nm = new JuegoTablero();
-    public static int randomio(int max){
-        int numAleatorio = (int) (Math.random() * max) + 1;
-        return numAleatorio;
-    }
 }

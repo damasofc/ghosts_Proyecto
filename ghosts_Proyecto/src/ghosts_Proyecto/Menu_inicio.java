@@ -15,26 +15,32 @@ public class Menu_inicio extends javax.swing.JFrame {
 
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         bt_iniciarSesion = new javax.swing.JButton();
         bt_crearPlayer = new javax.swing.JButton();
         bt_salir = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(61, 90, 32));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setForeground(new java.awt.Color(255, 47, 103));
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setText("Menu de Inicio");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("/home/damasofc/Descargas/imagenes descargadas/ghosts2.jpg")); // NOI18N
+        jLabel3.setText("jLabel3");
+        jLabel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.lightGray, null, java.awt.Color.orange));
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel2.setText("Ghosts");
 
         bt_iniciarSesion.setText("Iniciar sesion");
         bt_iniciarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -42,7 +48,6 @@ public class Menu_inicio extends javax.swing.JFrame {
                 bt_iniciarSesionActionPerformed(evt);
             }
         });
-        jPanel1.add(bt_iniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));
 
         bt_crearPlayer.setText("Crear Player");
         bt_crearPlayer.addActionListener(new java.awt.event.ActionListener() {
@@ -50,7 +55,6 @@ public class Menu_inicio extends javax.swing.JFrame {
                 bt_crearPlayerActionPerformed(evt);
             }
         });
-        jPanel1.add(bt_crearPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 130, -1));
 
         bt_salir.setText("Salir");
         bt_salir.addActionListener(new java.awt.event.ActionListener() {
@@ -58,41 +62,71 @@ public class Menu_inicio extends javax.swing.JFrame {
                 bt_salirActionPerformed(evt);
             }
         });
-        jPanel1.add(bt_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 86, -1));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 0));
-        jLabel1.setText("Menu de Inicio");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
-
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 51));
-        jLabel2.setText("Ghosts");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ghosts_Proyecto/res/ghosts2.jpg"))); // NOI18N
-        jLabel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.lightGray, null, java.awt.Color.orange));
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, 430, 350));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(205, 205, 205)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(268, 268, 268)
+                        .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(98, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(95, 95, 95))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(bt_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(135, 135, 135)
+                .addComponent(bt_iniciarSesion)
+                .addGap(63, 63, 63)
+                .addComponent(bt_crearPlayer)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_iniciarSesion)
+                    .addComponent(bt_crearPlayer))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bt_salir)
+                .addContainerGap())
+        );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void bt_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_salirActionPerformed
-        System.exit(EXIT_ON_CLOSE);//esto hace que al apretar el boton salir, se cierre el programa
-    }//GEN-LAST:event_bt_salirActionPerformed
+    private void bt_salirActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        this.dispose();//esto hace que al apretar el boton salir, se cierre el programa
+    }                                        
 
-    private void bt_iniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_iniciarSesionActionPerformed
+    private void bt_iniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         Menu_InicioSesion nw = new Menu_InicioSesion();//aca creo un objeto de la clase inicio_sesion
         nw.setVisible(true);//esto hace que al dar click en el boton iniciar sesion, se abra la ventana inicio_sesion
-        this.dispose();
-    }//GEN-LAST:event_bt_iniciarSesionActionPerformed
+        this.dispose();//esto hace que al apretar el boton, se cierre el programa
+    }                                                
 
-    private void bt_crearPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_crearPlayerActionPerformed
+    private void bt_crearPlayerActionPerformed(java.awt.event.ActionEvent evt) {                                               
         MainProyecto.crear.setVisible(true);//esto hace que al dar click en el boton crear player aparezca la ventana de crearPlayer
         this.setVisible(false);//esto hace que al dar click en crear player, se cierre esta ventana de Menu_Inicio
-    }//GEN-LAST:event_bt_crearPlayerActionPerformed
+        
+    }                                              
 
     /**
      * @param args the command line arguments
@@ -129,14 +163,14 @@ public class Menu_inicio extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton bt_crearPlayer;
     private javax.swing.JButton bt_iniciarSesion;
     private javax.swing.JButton bt_salir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }
+

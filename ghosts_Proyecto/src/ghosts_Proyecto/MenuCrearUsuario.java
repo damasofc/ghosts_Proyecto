@@ -1,4 +1,3 @@
-
 package ghosts_Proyecto;
 
 import javax.swing.JOptionPane;
@@ -13,7 +12,7 @@ public class MenuCrearUsuario  extends javax.swing.JFrame{
 
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
@@ -98,10 +97,10 @@ public class MenuCrearUsuario  extends javax.swing.JFrame{
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
     
-    private void bt_crearJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_crearJugadorActionPerformed
+    private void bt_crearJugadorActionPerformed(java.awt.event.ActionEvent evt) {                                                
         boolean comprobar = MainProyecto.comprobarUsuario(jtf_usuario.getText());//aca se llama al metodo comprobarUsuario y se almacena en la variable comprobar
         if(comprobar == true){//aca ya se evalua si el usuario esta o no esta.
             JOptionPane.showMessageDialog(null,"Jugador ya existente","Error",JOptionPane.ERROR_MESSAGE);
@@ -115,14 +114,13 @@ public class MenuCrearUsuario  extends javax.swing.JFrame{
         //******estos 2 de aca abajo hacen que luego de ingresar los datos y luego que haya ingresado el nuevo usuario entonces borre lo escrito en los textfiel
        jtf_usuario.setText("");
        psw_contra.setText("");
-       this.dispose();
-    }//GEN-LAST:event_bt_crearJugadorActionPerformed
+    }                                               
 
-    private void bt_atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_atrasActionPerformed
+    private void bt_atrasActionPerformed(java.awt.event.ActionEvent evt) {                                         
 
         MainProyecto.m.setVisible(true);//etso hace que se abra la ventana de Menu_inicio
         this.dispose();//aca se cierra esta ventana actual de crearPlayer
-    }//GEN-LAST:event_bt_atrasActionPerformed
+    }                                        
 
     /**
      * @param args the command line arguments
@@ -162,7 +160,7 @@ public class MenuCrearUsuario  extends javax.swing.JFrame{
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton bt_atras;
     private javax.swing.JButton bt_crearJugador;
     private javax.swing.JLabel jLabel1;
@@ -170,5 +168,5 @@ public class MenuCrearUsuario  extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jtf_usuario;
     private javax.swing.JPasswordField psw_contra;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }

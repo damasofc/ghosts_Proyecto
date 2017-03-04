@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 public class Menu_InicioSesion extends javax.swing.JFrame {
     public static Usuario  UsuarioActivo;
-    public static String contra;
+
 
     public Menu_InicioSesion() {
         initComponents();
@@ -18,7 +18,7 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
 
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
@@ -61,11 +61,12 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jtf_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-                            .addComponent(psw_contra)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(bt_entrar)))
+                            .addComponent(psw_contra))))
                 .addContainerGap(95, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(bt_entrar)
+                .addGap(149, 149, 149))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,35 +81,39 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(psw_contra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
+                .addGap(49, 49, 49)
                 .addComponent(bt_entrar)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void bt_entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_entrarActionPerformed
+    private void bt_entrarActionPerformed(java.awt.event.ActionEvent evt) {   
+        
 //*********Aca se comprueba si el usuario y contrasena ingresadas son de algun usuario almacenado*******8888
         boolean comprobar = MainProyecto.comprobarUsuarioIni(jtf_usuario.getText(), psw_contra.getText());
 //********aca comprueba si es true y el usuario ingreso bien la contrasena y el usuario entncs muestra un mensaje que dice que inicio sesion      
         if(comprobar == true){
+            this.dispose();//esto hace que al apretar el boton, se cierre el programa
             JOptionPane.showMessageDialog(null,"Has iniciado sesion","Excelente",JOptionPane.INFORMATION_MESSAGE);
-            Menu_principal mp = new Menu_principal();//aca creo un objeto de la clase inicio_sesion
+             Menu_principal mp = new Menu_principal();//aca creo un objeto de la clase inicio_sesion
         mp.setVisible(true);
         UsuarioActivo = MainProyecto.usuarios[MainProyecto.posicionUsuario];
-        this.dispose();
         }
         //******** y en caso de que ingreso mal algunos de los 2 datos, entonces dice invalido
         else if(comprobar == false){
                 JOptionPane.showMessageDialog(null,"Usuario o contraseña invalidos","Error",JOptionPane.ERROR_MESSAGE);
 
        }
+         
+       this.dispose();//esto hace que al apretar el boton, se cierre el programa
         //******estos 2 de aca abajo hacen que luego de ingresar los datos y luego que haya ingresado el nuevo usuario entonces borre lo escrito en los textfiel
        jtf_usuario.setText("");
        psw_contra.setText("");
-       this.dispose();
-    }//GEN-LAST:event_bt_entrarActionPerformed
+       
+    }   
+    
 
     /**
      * @param args the command line arguments
@@ -146,12 +151,13 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton bt_entrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jtf_usuario;
     private javax.swing.JPasswordField psw_contra;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }
+

@@ -87,7 +87,6 @@ public class Player_2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_nom2ActionPerformed
 String play2;
-
     private void jb_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_aceptarActionPerformed
          boolean comprobar = MainProyecto.comprobarUsuario(tf_nom2.getText());//aca se llama al metodo comprobarUsuario y se almacena en la variable comprobar
         if(comprobar == true){//aca ya se evalua si el usuario esta o no esta.
