@@ -61,12 +61,11 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jtf_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-                            .addComponent(psw_contra))))
+                            .addComponent(psw_contra)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(142, 142, 142)
+                        .addComponent(bt_entrar)))
                 .addContainerGap(95, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(bt_entrar)
-                .addGap(149, 149, 149))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,9 +80,9 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(psw_contra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
+                .addGap(46, 46, 46)
                 .addComponent(bt_entrar)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         pack();
@@ -98,6 +97,7 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
             Menu_principal mp = new Menu_principal();//aca creo un objeto de la clase inicio_sesion
         mp.setVisible(true);
         UsuarioActivo = MainProyecto.usuarios[MainProyecto.posicionUsuario];
+        this.dispose();
         }
         //******** y en caso de que ingreso mal algunos de los 2 datos, entonces dice invalido
         else if(comprobar == false){
@@ -107,6 +107,7 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
         //******estos 2 de aca abajo hacen que luego de ingresar los datos y luego que haya ingresado el nuevo usuario entonces borre lo escrito en los textfiel
        jtf_usuario.setText("");
        psw_contra.setText("");
+       this.dispose();
     }//GEN-LAST:event_bt_entrarActionPerformed
 
     /**

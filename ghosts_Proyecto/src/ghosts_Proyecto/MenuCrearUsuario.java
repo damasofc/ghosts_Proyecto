@@ -115,6 +115,7 @@ public class MenuCrearUsuario  extends javax.swing.JFrame{
         //******estos 2 de aca abajo hacen que luego de ingresar los datos y luego que haya ingresado el nuevo usuario entonces borre lo escrito en los textfiel
        jtf_usuario.setText("");
        psw_contra.setText("");
+       this.dispose();
     }//GEN-LAST:event_bt_crearJugadorActionPerformed
 
     private void bt_atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_atrasActionPerformed

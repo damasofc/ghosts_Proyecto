@@ -50,7 +50,7 @@ public class Menu_inicio extends javax.swing.JFrame {
                 bt_crearPlayerActionPerformed(evt);
             }
         });
-        jPanel1.add(bt_crearPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 130, -1));
+        jPanel1.add(bt_crearPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 130, -1));
 
         bt_salir.setText("Salir");
         bt_salir.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +70,7 @@ public class Menu_inicio extends javax.swing.JFrame {
         jLabel2.setText("Ghosts");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("/home/damasofc/Descargas/imagenes descargadas/ghosts2.jpg")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ghosts_Proyecto/res/ghosts2.jpg"))); // NOI18N
         jLabel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.lightGray, null, java.awt.Color.orange));
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, 430, 350));
 
@@ -86,6 +86,7 @@ public class Menu_inicio extends javax.swing.JFrame {
     private void bt_iniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_iniciarSesionActionPerformed
         Menu_InicioSesion nw = new Menu_InicioSesion();//aca creo un objeto de la clase inicio_sesion
         nw.setVisible(true);//esto hace que al dar click en el boton iniciar sesion, se abra la ventana inicio_sesion
+        this.dispose();
     }//GEN-LAST:event_bt_iniciarSesionActionPerformed
 
     private void bt_crearPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_crearPlayerActionPerformed
