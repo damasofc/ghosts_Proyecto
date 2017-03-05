@@ -86,12 +86,15 @@ public class Player_2 extends javax.swing.JFrame {
     private void tf_nom2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_nom2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_nom2ActionPerformed
-String play2;
+    public static Usuario  Usuario2Activo;//esta variable almacenara el player 2 que este activo
+
     private void jb_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_aceptarActionPerformed
          boolean comprobar = MainProyecto.comprobarUsuario(tf_nom2.getText());//aca se llama al metodo comprobarUsuario y se almacena en la variable comprobar
         if(comprobar == true){//aca ya se evalua si el usuario esta o no esta.
-          MainProyecto.nm.setVisible(true);
-        this.dispose();  
+          Menu_InicioSesion.nm.setVisible(true);
+          JOptionPane.showMessageDialog(null,"Los fantasmas del player 1 son los blancos \ny los del player 2 son los negros","Informacion",JOptionPane.INFORMATION_MESSAGE);
+          Usuario2Activo = MainProyecto.usuarios[MainProyecto.posicionUsuario];
+          this.dispose();  
         } else{
             JOptionPane.showMessageDialog(null,"Ingrese un nombre de usuario valido","Error",JOptionPane.INFORMATION_MESSAGE);//hace que se vea la ventanita diciendo que se creo el nuevo usuario
         }

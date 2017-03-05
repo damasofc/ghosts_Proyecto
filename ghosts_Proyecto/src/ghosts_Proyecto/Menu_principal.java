@@ -32,6 +32,11 @@ public class Menu_principal extends javax.swing.JFrame {
         jLabel1.setMaximumSize(new java.awt.Dimension(70, 30));
 
         jb_JugarGhost.setText("Jugar Ghost");
+        jb_JugarGhost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_JugarGhostActionPerformed(evt);
+            }
+        });
 
         jb_Configuracion.setText("Configuracion");
         jb_Configuracion.addActionListener(new java.awt.event.ActionListener() {
@@ -144,6 +149,12 @@ this.dispose();//aca se cierra esta ventana actual
         cmj.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jb_juegaActionPerformed
+
+    private void jb_JugarGhostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_JugarGhostActionPerformed
+        Player_2 p2=new Player_2();
+        p2.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jb_JugarGhostActionPerformed
 
     
     public static void main(String args[]) {
