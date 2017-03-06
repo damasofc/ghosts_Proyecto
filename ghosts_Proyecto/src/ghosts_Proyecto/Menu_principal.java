@@ -123,6 +123,7 @@ public class Menu_principal extends javax.swing.JFrame {
        this.dispose();//aca se cierra esta ventana actual
        Mi_perfil mip=new Mi_perfil();
        mip.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_jb_MiperfilActionPerformed
 
     private void jb_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_SalirActionPerformed

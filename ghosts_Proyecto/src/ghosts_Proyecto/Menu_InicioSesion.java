@@ -113,7 +113,7 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
         //******estos 2 de aca abajo hacen que luego de ingresar los datos y luego que haya ingresado el nuevo usuario entonces borre lo escrito en los textfiel
        jtf_usuario.setText("");
        psw_contra.setText("");
-       this.dispose();
+       
     }//GEN-LAST:event_bt_entrarActionPerformed
 
     private void jtf_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_usuarioActionPerformed
