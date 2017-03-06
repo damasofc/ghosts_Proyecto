@@ -6,12 +6,12 @@ package ghosts_Proyecto;
 
 
 public class MainProyecto {
-//comentario
+
     public static Usuario usuarios[];//el arreglo donde se almacenaran los nombres de usuarios
     public static MenuCrearUsuario crear = new MenuCrearUsuario();//creo un objeto de la clase MenuCrearUusario
     private static int contador;// es un contador que se usa mas abajo....
     public static Menu_inicio m = new Menu_inicio();// crea un objeto de la clase Menu_inicio
-    //public static JuegoTablero nm = new JuegoTablero();
+    
     
 
     public static void main(String[] args) {
@@ -62,6 +62,7 @@ public class MainProyecto {
 
     }
     int cantGhosts;
+    public static JuegoTablero nm = new JuegoTablero();
     public static int randomio(int max){
         int numAleatorio = (int) (Math.random() * max) + 1;
         return numAleatorio;

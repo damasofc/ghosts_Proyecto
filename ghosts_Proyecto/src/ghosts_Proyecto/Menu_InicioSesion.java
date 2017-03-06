@@ -10,7 +10,6 @@ import javax.swing.JOptionPane;
 public class Menu_InicioSesion extends javax.swing.JFrame {
     public static Usuario  UsuarioActivo;
     public static String contra;
-    public static JuegoTablero nm = new JuegoTablero();
 
     public Menu_InicioSesion() {
         initComponents();
@@ -38,6 +37,12 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
 
         jLabel3.setText("Contraseña: ");
 
+        jtf_usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtf_usuarioActionPerformed(evt);
+            }
+        });
+
         bt_entrar.setText("Entrar");
         bt_entrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,36 +60,35 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
                         .addGap(160, 160, 160)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(142, 142, 142)
+                        .addComponent(bt_entrar))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(87, 87, 87)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2))
                         .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtf_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-                            .addComponent(psw_contra))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(psw_contra, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtf_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(95, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(bt_entrar)
-                .addGap(149, 149, 149))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jtf_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(psw_contra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
+                .addGap(46, 46, 46)
                 .addComponent(bt_entrar)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         pack();
@@ -99,6 +103,7 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
             Menu_principal mp = new Menu_principal();//aca creo un objeto de la clase inicio_sesion
         mp.setVisible(true);
         UsuarioActivo = MainProyecto.usuarios[MainProyecto.posicionUsuario];
+        this.dispose();
         }
         //******** y en caso de que ingreso mal algunos de los 2 datos, entonces dice invalido
         else if(comprobar == false){
@@ -108,7 +113,12 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
         //******estos 2 de aca abajo hacen que luego de ingresar los datos y luego que haya ingresado el nuevo usuario entonces borre lo escrito en los textfiel
        jtf_usuario.setText("");
        psw_contra.setText("");
+       this.dispose();
     }//GEN-LAST:event_bt_entrarActionPerformed
+
+    private void jtf_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_usuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtf_usuarioActionPerformed
 
     /**
      * @param args the command line arguments

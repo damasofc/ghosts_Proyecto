@@ -33,6 +33,7 @@ public class Player_2 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         tf_nom2 = new javax.swing.JTextField();
         jb_aceptar = new javax.swing.JButton();
+        bt_2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,6 +53,13 @@ public class Player_2 extends javax.swing.JFrame {
             }
         });
 
+        bt_2.setText("Regresar");
+        bt_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -64,8 +72,10 @@ public class Player_2 extends javax.swing.JFrame {
                             .addComponent(tf_nom2, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(jb_aceptar)))
+                        .addGap(87, 87, 87)
+                        .addComponent(jb_aceptar)
+                        .addGap(28, 28, 28)
+                        .addComponent(bt_2)))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -75,9 +85,11 @@ public class Player_2 extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tf_nom2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jb_aceptar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jb_aceptar)
+                    .addComponent(bt_2))
+                .addContainerGap())
         );
 
         pack();
@@ -87,6 +99,7 @@ public class Player_2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_nom2ActionPerformed
 String play2;
+
     private void jb_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_aceptarActionPerformed
          boolean comprobar = MainProyecto.comprobarUsuario(tf_nom2.getText());//aca se llama al metodo comprobarUsuario y se almacena en la variable comprobar
         if(comprobar == true){//aca ya se evalua si el usuario esta o no esta.
@@ -97,6 +110,11 @@ String play2;
         }
         
     }//GEN-LAST:event_jb_aceptarActionPerformed
+
+    private void bt_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_2ActionPerformed
+        Menu_principal mp = new Menu_principal();
+        mp.setVisible(true);
+    }//GEN-LAST:event_bt_2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,6 +152,7 @@ String play2;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jb_aceptar;
     private javax.swing.JTextField tf_nom2;

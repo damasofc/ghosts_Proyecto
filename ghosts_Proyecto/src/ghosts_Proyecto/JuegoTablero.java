@@ -106,8 +106,7 @@ public class JuegoTablero extends javax.swing.JFrame {
         cargarFantasmas(0);
         cargarFantasmas(1);
         this.pack();
-        jLabel2.setText("Turno de player 1");
-        jLabel1.setIcon(new ImageIcon(getClass().getResource("/ghosts_Proyecto/res/ghost.png")));
+        jLabel2.setText("Turno de:\nplayer 1");
         
         
     }
@@ -156,11 +155,11 @@ public class JuegoTablero extends javax.swing.JFrame {
                                     Ghosts.paso = false;//esta es la variable que declare en la clase ghost.
                                     playerTurno += 1;
                                     if(playerTurno % 2 == 0){
-                                        jLabel2.setText("Turno de "+ Player_2.Usuario2Activo.getNombUsuario());
+                                        jLabel2.setText("Turno de player 2");
                                         jLabel1.setIcon(new ImageIcon(getClass().getResource("/ghosts_Proyecto/res/ghostnegro.jpg")));
                                     }
                                     else{
-                                        jLabel2.setText("Turno de " + Menu_InicioSesion.UsuarioActivo.getNombUsuario());
+                                        jLabel2.setText("Turno de player 1");
                                         jLabel1.setIcon(new ImageIcon(getClass().getResource("/ghosts_Proyecto/res/ghost.png")));
                                     }
                                     break;
@@ -547,8 +546,8 @@ public class JuegoTablero extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                    //new JuegoTablero().setVisible(true);
-                   //MainProyecto.nm.setVisible(true);
-                   
+                   MainProyecto.nm.setVisible(true);
+                   JOptionPane.showMessageDialog(null,"Los fantasmas del player 1 son los blancos \ny los del player 2 son los negros","Informacion",JOptionPane.INFORMATION_MESSAGE);
                    //
 
             }
@@ -557,7 +556,7 @@ public class JuegoTablero extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private static javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;

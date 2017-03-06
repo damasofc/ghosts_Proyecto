@@ -16,6 +16,7 @@ public class cambio_p extends javax.swing.JFrame {
      */
     public cambio_p() {
         initComponents();
+        setLocationRelativeTo(null);//esto hace que la panatalla aparezca en medio
     }
 
     /**
@@ -27,69 +28,22 @@ public class cambio_p extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialogCambioContraseña = new javax.swing.JDialog();
-        jLabel2 = new javax.swing.JLabel();
-        jButtonAceptar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButtonCambiarContraseña = new javax.swing.JButton();
-        jPasswordFieldNuevaContraseña = new javax.swing.JPasswordField();
-        jButtonRegresar = new javax.swing.JButton();
-
-        jLabel2.setText("Has cambiado la contraseña con exito");
-
-        jButtonAceptar.setText("Aceptar");
-        jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAceptarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jDialogCambioContraseñaLayout = new javax.swing.GroupLayout(jDialogCambioContraseña.getContentPane());
-        jDialogCambioContraseña.getContentPane().setLayout(jDialogCambioContraseñaLayout);
-        jDialogCambioContraseñaLayout.setHorizontalGroup(
-            jDialogCambioContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialogCambioContraseñaLayout.createSequentialGroup()
-                .addGroup(jDialogCambioContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialogCambioContraseñaLayout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jLabel2))
-                    .addGroup(jDialogCambioContraseñaLayout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addComponent(jButtonAceptar)))
-                .addContainerGap(66, Short.MAX_VALUE))
-        );
-        jDialogCambioContraseñaLayout.setVerticalGroup(
-            jDialogCambioContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialogCambioContraseñaLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(jButtonAceptar)
-                .addContainerGap())
-        );
+        jLabel2 = new javax.swing.JLabel();
+        txf_cont = new javax.swing.JTextField();
+        bt_reg = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel1.setText("Escriba la nueva contraseña");
+        jLabel1.setText("Cambio de Contraseña");
 
-        jButtonCambiarContraseña.setText("Cambiar");
-        jButtonCambiarContraseña.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCambiarContraseñaActionPerformed(evt);
-            }
-        });
+        jLabel2.setText("Nueva contraseña: ");
 
-        jPasswordFieldNuevaContraseña.addActionListener(new java.awt.event.ActionListener() {
+        bt_reg.setText("Regresar");
+        bt_reg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordFieldNuevaContraseñaActionPerformed(evt);
-            }
-        });
-
-        jButtonRegresar.setText("Regresar");
-        jButtonRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRegresarActionPerformed(evt);
+                bt_regActionPerformed(evt);
             }
         });
 
@@ -97,60 +51,44 @@ public class cambio_p extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 48, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
             .addGroup(layout.createSequentialGroup()
-                .addGap(165, 165, 165)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonCambiarContraseña)
-                        .addGap(49, 49, 49)
-                        .addComponent(jButtonRegresar))
-                    .addComponent(jPasswordFieldNuevaContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(84, 84, 84)
+                        .addComponent(jLabel2)
+                        .addGap(26, 26, 26)
+                        .addComponent(txf_cont, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(160, 160, 160)
+                        .addComponent(bt_reg)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(jPasswordFieldNuevaContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCambiarContraseña)
-                    .addComponent(jButtonRegresar))
-                .addContainerGap())
+                    .addComponent(jLabel2)
+                    .addComponent(txf_cont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(bt_reg)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordFieldNuevaContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldNuevaContraseñaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordFieldNuevaContraseñaActionPerformed
-
-    private void jButtonCambiarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCambiarContraseñaActionPerformed
-        // TODO add your handling code here:
-        String nuevaContraseña = jPasswordFieldNuevaContraseña.getText();
-        Menu_InicioSesion.UsuarioActivo.setContra(nuevaContraseña);
-        jDialogCambioContraseña.setVisible(true);
-        jDialogCambioContraseña.setTitle("Contraseña Cambiada");
-        jDialogCambioContraseña.setSize(300, 150);
-        jDialogCambioContraseña.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jButtonCambiarContraseñaActionPerformed
-
-    private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
-        // TODO add your handling code here:
-        jDialogCambioContraseña.setVisible(false);
-    }//GEN-LAST:event_jButtonAceptarActionPerformed
-
-    private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
-        // TODO add your handling code here:
+    private void bt_regActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_regActionPerformed
+        
+        Menu_InicioSesion.contra =txf_cont.getText();
         this.dispose();
-    }//GEN-LAST:event_jButtonRegresarActionPerformed
+        
+    }//GEN-LAST:event_bt_regActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,12 +126,9 @@ public class cambio_p extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAceptar;
-    private javax.swing.JButton jButtonCambiarContraseña;
-    private javax.swing.JButton jButtonRegresar;
-    private javax.swing.JDialog jDialogCambioContraseña;
+    private javax.swing.JButton bt_reg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPasswordField jPasswordFieldNuevaContraseña;
+    private javax.swing.JTextField txf_cont;
     // End of variables declaration//GEN-END:variables
 }
