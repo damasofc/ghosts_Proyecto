@@ -237,6 +237,7 @@ public class JuegoTablero extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jBt_Retirarse = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(850, 680));
@@ -523,6 +524,14 @@ public class JuegoTablero extends javax.swing.JFrame {
 
         getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 40, 170, 170));
 
+        jBt_Retirarse.setText("Retirarse");
+        jBt_Retirarse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBt_RetirarseActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBt_Retirarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 470, -1, -1));
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -541,6 +550,20 @@ public class JuegoTablero extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tableroPanelComponentAdded
 
+    private void jBt_RetirarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBt_RetirarseActionPerformed
+        if(playerTurno % 2 == 0){
+            JOptionPane.showMessageDialog(null,"PLayer 2 se ha retirado","Retirado",JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+            Menu_principal mp = new Menu_principal();//aca creo un objeto de la clase inicio_sesion
+            mp.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"PLayer 1 se ha retirado","Retirado",JOptionPane.INFORMATION_MESSAGE);
+            Menu_principal mp = new Menu_principal();//aca creo un objeto de la clase inicio_sesion
+            mp.setVisible(true);
+        }
+    }//GEN-LAST:event_jBt_RetirarseActionPerformed
+
 
     public static void main(String args[]) {;
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -555,6 +578,7 @@ public class JuegoTablero extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBt_Retirarse;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

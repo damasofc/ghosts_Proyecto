@@ -124,7 +124,7 @@ public class Mi_perfil extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_passwordActionPerformed
 
     private void jb_miperfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_miperfilActionPerformed
-        ta_Pantalla.append("Nombre de Usuariol: \n"+Menu_InicioSesion.UsuarioActivo + "\n");
+        ta_Pantalla.append("Nombre de Usuario: \n"+Menu_InicioSesion.UsuarioActivo.getNombUsuario() + "\n");
         
         ta_Pantalla.append("Contraseña: \n"+Menu_InicioSesion.UsuarioActivo.getContra());
     }//GEN-LAST:event_jb_miperfilActionPerformed
