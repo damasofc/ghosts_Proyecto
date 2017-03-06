@@ -42,7 +42,7 @@ public class Menu_inicio extends javax.swing.JFrame {
                 bt_iniciarSesionActionPerformed(evt);
             }
         });
-        jPanel1.add(bt_iniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));
+        jPanel1.add(bt_iniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, -1));
 
         bt_crearPlayer.setText("Crear Player");
         bt_crearPlayer.addActionListener(new java.awt.event.ActionListener() {
@@ -84,14 +84,14 @@ public class Menu_inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_salirActionPerformed
 
     private void bt_iniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_iniciarSesionActionPerformed
-        Menu_InicioSesion nw = new Menu_InicioSesion();//aca creo un objeto de la clase inicio_sesion
-        nw.setVisible(true);//esto hace que al dar click en el boton iniciar sesion, se abra la ventana inicio_sesion
+
+        MainProyecto.mis.setVisible(true);//esto hace que al dar click en el boton iniciar sesion, se abra la ventana inicio_sesion
         this.dispose();
     }//GEN-LAST:event_bt_iniciarSesionActionPerformed
 
     private void bt_crearPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_crearPlayerActionPerformed
         MainProyecto.crear.setVisible(true);//esto hace que al dar click en el boton crear player aparezca la ventana de crearPlayer
-        this.setVisible(false);//esto hace que al dar click en crear player, se cierre esta ventana de Menu_Inicio
+        this.dispose();//esto hace que al dar click en crear player, se cierre esta ventana de Menu_Inicio
     }//GEN-LAST:event_bt_crearPlayerActionPerformed
 
     /**

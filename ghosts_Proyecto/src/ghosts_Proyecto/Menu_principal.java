@@ -1,16 +1,22 @@
 
 package ghosts_Proyecto;
 
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 
 public class Menu_principal extends javax.swing.JFrame {
-
+/*esto que viene aca sera crear las variables para cada uno de los Jframes
+    que se podran abrir al iniciar sesion y asi poder accederlos desde una sola clase*/
+        Mi_perfil mip=new Mi_perfil();
+        Menu_configuracion mc=new Menu_configuracion();
+        Menu_reportes mr=new Menu_reportes();
+        Como_jugar cmj= new Como_jugar();
+        Player_2 p2=new Player_2();
+    
     
     public Menu_principal() {
         initComponents();
-        jLabel3.setText(Menu_InicioSesion.nombreUsuarioActiv);
-        jLabel3.setVisible(true);
         setLocationRelativeTo(null);//esto hace que la panatalla aparezca en medio
     }
 
@@ -77,6 +83,7 @@ public class Menu_principal extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setText("usuario");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,41 +138,34 @@ public class Menu_principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jb_MiperfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_MiperfilActionPerformed
-       this.dispose();//aca se cierra esta ventana actual
-       Mi_perfil mip=new Mi_perfil();
-       mip.setVisible(true);
-       this.dispose();
+        mip.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jb_MiperfilActionPerformed
 
     private void jb_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_SalirActionPerformed
-this.dispose();//esto hace que al apretar el boton salir, se cierre el programa 
-JOptionPane.showMessageDialog(null,"A cerrado sesion","Nos vemos luego",JOptionPane.INFORMATION_MESSAGE);
-MainProyecto.m.setVisible(true);//etso hace que se abra la ventana de Menu_inicio
-this.dispose();//aca se cierra esta ventana actual
+        JOptionPane.showMessageDialog(null,"A cerrado sesion","Nos vemos luego",JOptionPane.INFORMATION_MESSAGE);
+        MainProyecto.m.setVisible(true);//etso hace que se abra la ventana de Menu_inicio
+        this.dispose();//aca se cierra esta ventana actual
     }//GEN-LAST:event_jb_SalirActionPerformed
 
     private void jb_ConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_ConfiguracionActionPerformed
-        Menu_configuracion mc=new Menu_configuracion();
         mc.setVisible(true);
         this.dispose();//aca se cierra esta ventana actual
     }//GEN-LAST:event_jb_ConfiguracionActionPerformed
 
     private void jb_ReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_ReportesActionPerformed
-        Menu_reportes mr=new Menu_reportes();
         mr.setVisible(true);
         this.dispose();//aca se cierra esta ventana actual
     }//GEN-LAST:event_jb_ReportesActionPerformed
 
     private void jb_juegaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_juegaActionPerformed
-        Como_jugar cmj= new Como_jugar();
         cmj.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jb_juegaActionPerformed
 
     private void jb_JugarGhostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_JugarGhostActionPerformed
-        Player_2 p2=new Player_2();
         p2.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jb_JugarGhostActionPerformed
 
     

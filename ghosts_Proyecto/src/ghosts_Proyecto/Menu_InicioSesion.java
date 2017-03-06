@@ -9,7 +9,8 @@ import javax.swing.JOptionPane;
 
 public class Menu_InicioSesion extends javax.swing.JFrame {
     public static Usuario  UsuarioActivo;
-    public static String nombreUsuarioActiv ;
+    Menu_principal mp = new Menu_principal();//aca creo un objeto de la clase inicio_sesion
+    public static JuegoTablero nm = new JuegoTablero();
 
     public Menu_InicioSesion() {
         initComponents();
@@ -27,6 +28,7 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
         jtf_usuario = new javax.swing.JTextField();
         bt_entrar = new javax.swing.JButton();
         psw_contra = new javax.swing.JPasswordField();
+        but_regresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,6 +52,13 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
             }
         });
 
+        but_regresar.setText("Regresar");
+        but_regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                but_regresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -70,7 +79,10 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(psw_contra, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtf_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jtf_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(but_regresar)))
                 .addContainerGap(95, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -88,7 +100,9 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
                     .addComponent(psw_contra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addComponent(bt_entrar)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(but_regresar)
+                .addContainerGap())
         );
 
         pack();
@@ -99,11 +113,10 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
         boolean comprobar = MainProyecto.comprobarUsuarioIni(jtf_usuario.getText(), psw_contra.getText());
 //********aca comprueba si es true y el usuario ingreso bien la contrasena y el usuario entncs muestra un mensaje que dice que inicio sesion      
         if(comprobar == true){
+            int posicionUsuario = MainProyecto.comprobarPosicionUsuario(jtf_usuario.getText());
+            UsuarioActivo = MainProyecto.usuarios[posicionUsuario];
             JOptionPane.showMessageDialog(null,"Has iniciado sesion","Excelente",JOptionPane.INFORMATION_MESSAGE);
-            Menu_principal mp = new Menu_principal();//aca creo un objeto de la clase inicio_sesion
             mp.setVisible(true);
-            UsuarioActivo = MainProyecto.usuarios[MainProyecto.posicionUsuario];
-            nombreUsuarioActiv = UsuarioActivo.getNombUsuario();
             this.dispose();
         }
         //******** y en caso de que ingreso mal algunos de los 2 datos, entonces dice invalido
@@ -120,6 +133,11 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
     private void jtf_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_usuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtf_usuarioActionPerformed
+
+    private void but_regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but_regresarActionPerformed
+        MainProyecto.m.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_but_regresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,6 +177,7 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_entrar;
+    private javax.swing.JButton but_regresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

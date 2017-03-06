@@ -43,6 +43,12 @@ public class cambio_p extends javax.swing.JFrame {
 
         jLabel2.setText("Nueva contraseña: ");
 
+        txf_cont.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txf_contActionPerformed(evt);
+            }
+        });
+
         bt_reg.setText("Regresar");
         bt_reg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,6 +119,10 @@ public class cambio_p extends javax.swing.JFrame {
         mp.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jb_cambActionPerformed
+
+    private void txf_contActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txf_contActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txf_contActionPerformed
 
     /**
      * @param args the command line arguments

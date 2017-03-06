@@ -16,6 +16,7 @@ public class Player_2 extends javax.swing.JFrame {
     /**
      * Creates new form Player_2
      */
+    public static String usuarioActivo2;
     public Player_2() {
         initComponents();
         setLocationRelativeTo(null);
@@ -98,14 +99,17 @@ public class Player_2 extends javax.swing.JFrame {
     private void tf_nom2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_nom2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_nom2ActionPerformed
-String play2;
+
 
     private void jb_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_aceptarActionPerformed
          boolean comprobar = MainProyecto.comprobarUsuario(tf_nom2.getText());//aca se llama al metodo comprobarUsuario y se almacena en la variable comprobar
         if(comprobar == true){//aca ya se evalua si el usuario esta o no esta.
-          MainProyecto.nm.setVisible(true);
-        this.dispose();  
-        } else{
+            usuarioActivo2 = tf_nom2.getText();
+            Menu_InicioSesion.nm.setVisible(true);
+            this.dispose();
+            JOptionPane.showMessageDialog(null,"Los fantasmas del player 1 son los blancos \ny los del player 2 son los negros","Informacion",JOptionPane.INFORMATION_MESSAGE);
+        } 
+        else{
             JOptionPane.showMessageDialog(null,"Ingrese un nombre de usuario valido","Error",JOptionPane.INFORMATION_MESSAGE);//hace que se vea la ventanita diciendo que se creo el nuevo usuario
         }
         
@@ -114,6 +118,7 @@ String play2;
     private void bt_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_2ActionPerformed
         Menu_principal mp = new Menu_principal();
         mp.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bt_2ActionPerformed
 
     /**

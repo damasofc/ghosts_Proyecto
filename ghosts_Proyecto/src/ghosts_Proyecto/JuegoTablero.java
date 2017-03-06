@@ -96,17 +96,14 @@ public class JuegoTablero extends javax.swing.JFrame {
             }
         }
     }
-    
     public JuegoTablero() {
         initComponents();
-        
         almacenarPaneles();
         guardarFantasmas(0);
         guardarFantasmas(1);
         cargarFantasmas(0);
         cargarFantasmas(1);
         this.pack();
-        jLabel2.setText("Turno de:\nplayer 1");
         
         
     }
@@ -155,11 +152,11 @@ public class JuegoTablero extends javax.swing.JFrame {
                                     Ghosts.paso = false;//esta es la variable que declare en la clase ghost.
                                     playerTurno += 1;
                                     if(playerTurno % 2 == 0){
-                                        jLabel2.setText("Turno de player 2");
+                                        jLabel2.setText("Turno de player " + Player_2.usuarioActivo2);
                                         jLabel1.setIcon(new ImageIcon(getClass().getResource("/ghosts_Proyecto/res/ghostnegro.jpg")));
                                     }
                                     else{
-                                        jLabel2.setText("Turno de player 1");
+                                        jLabel2.setText("Turno de player "+ Menu_InicioSesion.UsuarioActivo.getNombUsuario());
                                         jLabel1.setIcon(new ImageIcon(getClass().getResource("/ghosts_Proyecto/res/ghost.png")));
                                     }
                                     break;
@@ -240,7 +237,6 @@ public class JuegoTablero extends javax.swing.JFrame {
         jBt_Retirarse = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(850, 680));
         setResizable(false);
         setSize(new java.awt.Dimension(840, 750));
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -552,26 +548,26 @@ public class JuegoTablero extends javax.swing.JFrame {
 
     private void jBt_RetirarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBt_RetirarseActionPerformed
         if(playerTurno % 2 == 0){
-            JOptionPane.showMessageDialog(null,"PLayer 2 se ha retirado","Retirado",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,Menu_InicioSesion.UsuarioActivo.getNombUsuario()+" se ha retirado","Retirado",JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
             Menu_principal mp = new Menu_principal();//aca creo un objeto de la clase inicio_sesion
             mp.setVisible(true);
         }
         else{
-            JOptionPane.showMessageDialog(null,"PLayer 1 se ha retirado","Retirado",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,Menu_InicioSesion.UsuarioActivo.getNombUsuario()+" se ha retirado","Retirado",JOptionPane.INFORMATION_MESSAGE);
             Menu_principal mp = new Menu_principal();//aca creo un objeto de la clase inicio_sesion
             mp.setVisible(true);
         }
+        this.dispose();
     }//GEN-LAST:event_jBt_RetirarseActionPerformed
 
 
     public static void main(String args[]) {;
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                   //new JuegoTablero().setVisible(true);
-                   MainProyecto.nm.setVisible(true);
-                   JOptionPane.showMessageDialog(null,"Los fantasmas del player 1 son los blancos \ny los del player 2 son los negros","Informacion",JOptionPane.INFORMATION_MESSAGE);
-                   //
+                   new JuegoTablero().setVisible(true);
+                   
+                   
 
             }
         });
@@ -580,7 +576,7 @@ public class JuegoTablero extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBt_Retirarse;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    public static javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;

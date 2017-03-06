@@ -45,6 +45,10 @@
                           <Component id="jtf_usuario" min="-2" pref="101" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="but_regresar" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="95" max="32767" attributes="0"/>
           </Group>
@@ -67,7 +71,9 @@
               </Group>
               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
               <Component id="bt_entrar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="65" max="32767" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
+              <Component id="but_regresar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -105,6 +111,14 @@
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="psw_contra">
+    </Component>
+    <Component class="javax.swing.JButton" name="but_regresar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Regresar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="but_regresarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

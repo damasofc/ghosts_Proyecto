@@ -101,9 +101,9 @@ public class Ghosts extends JLabel implements MouseListener{
             //todo esto es para comprobar que el fantasma que se seleccione, sea del player que lleva el turno\
             // y en caso de no serlo, no se podra mover
             int quienSigue = JuegoTablero.playerTurno %2 == 0?1:0;
-            for(int i = 0; i < MainProyecto.nm.ghosts[quienSigue].length;i++){
+            for(int i = 0; i < Menu_InicioSesion.nm.ghosts[quienSigue].length;i++){
                 String name = this.getName();
-                if(name == MainProyecto.nm.ghosts[quienSigue][i].getName()){
+                if(name == Menu_InicioSesion.nm.ghosts[quienSigue][i].getName()){
                     confirm = true;
                 }
             }

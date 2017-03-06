@@ -109,13 +109,14 @@ public class MenuCrearUsuario  extends javax.swing.JFrame{
         else if(comprobar == false){//aca se evalua si el usuario no esta entonces se hacen las siguientes instrucciones.
                 MainProyecto.crearUsuario(jtf_usuario.getText(), psw_contra.getText());//se llama al metodo y se crea el usuario.
                 JOptionPane.showMessageDialog(null,"Usuario creado","Excelente",JOptionPane.INFORMATION_MESSAGE);//hace que se vea la ventanita diciendo que se creo el nuevo usuario
-                MainProyecto.m.setVisible(false);//aca se cierra esta ventana actual de crearPlayer
+                this.dispose();
                 MainProyecto.m.setVisible(true);//etso hace que se abra la ventana de Menu_inicio
        }
         //******estos 2 de aca abajo hacen que luego de ingresar los datos y luego que haya ingresado el nuevo usuario entonces borre lo escrito en los textfiel
        jtf_usuario.setText("");
        psw_contra.setText("");
-       this.dispose();
+       
+
     }//GEN-LAST:event_bt_crearJugadorActionPerformed
 
     private void bt_atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_atrasActionPerformed
