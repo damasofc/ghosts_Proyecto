@@ -89,21 +89,27 @@ public class Ghosts extends JLabel implements MouseListener{
             }
         }
     }
+/*
+    esta variable de tipo Ghost almacenara el ultimo fantasmita al cual se le clickeo, esto servira para quitar el borde
+    cuando se seleccione otro fantasmita
+    */
+    Ghosts nms ;
     public static boolean paso = false;//esta variable la creo para que cuando se de click en cualquier espacio en el tablero
     // no haga nada hasta que esta variable haya sido cambiada a true.
     @Override
     public void mouseClicked(MouseEvent e) {
         boolean confirm = false;//esta variable la usare para comprobar que el fantasma que se seleccion, sea del player que le toca el turno.
         if(contador == 0){
+
             /*si en esta variable quienSigue se almacena el valor de 1, significa que es el turno del player 2, y en caso de ser 0
             va el player 1
             */
             //todo esto es para comprobar que el fantasma que se seleccione, sea del player que lleva el turno\
             // y en caso de no serlo, no se podra mover
             int quienSigue = JuegoTablero.playerTurno %2 == 0?1:0;
-            for(int i = 0; i < Menu_InicioSesion.nm.ghosts[quienSigue].length;i++){
+            for(int i = 0; i < Player_2.nm.ghosts[quienSigue].length;i++){
                 String name = this.getName();
-                if(name == Menu_InicioSesion.nm.ghosts[quienSigue][i].getName()){
+                if(name == Player_2.nm.ghosts[quienSigue][i].getName()){
                     confirm = true;
                 }
             }
@@ -119,6 +125,7 @@ public class Ghosts extends JLabel implements MouseListener{
             posicionFila = 0;
             posicionColumna = 0;
             contador = 0;
+            paso = false;
         }
         
         

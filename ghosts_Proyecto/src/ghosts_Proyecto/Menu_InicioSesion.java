@@ -8,9 +8,8 @@ import javax.swing.JOptionPane;
 
 
 public class Menu_InicioSesion extends javax.swing.JFrame {
-    public static Usuario  UsuarioActivo;
-    Menu_principal mp = new Menu_principal();//aca creo un objeto de la clase inicio_sesion
-    public static JuegoTablero nm = new JuegoTablero();
+    public static Usuario  UsuarioActivo = new Usuario(" ", " ");
+    public static Menu_principal mp ;//aca creo un objeto de la clase inicio_sesion
 
     public Menu_InicioSesion() {
         initComponents();
@@ -115,6 +114,7 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
         if(comprobar == true){
             int posicionUsuario = MainProyecto.comprobarPosicionUsuario(jtf_usuario.getText());
             UsuarioActivo = MainProyecto.usuarios[posicionUsuario];
+            mp = new Menu_principal();//aca creo un nuevo objeto de la clase inicio_sesion
             JOptionPane.showMessageDialog(null,"Has iniciado sesion","Excelente",JOptionPane.INFORMATION_MESSAGE);
             mp.setVisible(true);
             this.dispose();

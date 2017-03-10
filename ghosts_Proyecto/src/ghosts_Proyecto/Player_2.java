@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  * @author Jhair
  */
 public class Player_2 extends javax.swing.JFrame {
-
+    public static JuegoTablero nm;
     /**
      * Creates new form Player_2
      */
@@ -105,9 +105,11 @@ public class Player_2 extends javax.swing.JFrame {
          boolean comprobar = MainProyecto.comprobarUsuario(tf_nom2.getText());//aca se llama al metodo comprobarUsuario y se almacena en la variable comprobar
         if(comprobar == true){//aca ya se evalua si el usuario esta o no esta.
             usuarioActivo2 = tf_nom2.getText();
-            Menu_InicioSesion.nm.setVisible(true);
+            nm = new JuegoTablero();
+            nm.setVisible(true);
             this.dispose();
-            JOptionPane.showMessageDialog(null,"Los fantasmas del player 1 son los blancos \ny los del player 2 son los negros","Informacion",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Los fantasmas de "+Menu_InicioSesion.UsuarioActivo.getNombUsuario()
+                    + " son los blancos \ny los de "+Player_2.usuarioActivo2+ " son los negros","Informacion",JOptionPane.INFORMATION_MESSAGE);
         } 
         else{
             JOptionPane.showMessageDialog(null,"Ingrese un nombre de usuario valido","Error",JOptionPane.INFORMATION_MESSAGE);//hace que se vea la ventanita diciendo que se creo el nuevo usuario

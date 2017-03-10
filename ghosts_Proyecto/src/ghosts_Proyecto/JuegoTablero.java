@@ -103,6 +103,8 @@ public class JuegoTablero extends javax.swing.JFrame {
         guardarFantasmas(1);
         cargarFantasmas(0);
         cargarFantasmas(1);
+        jLabel2.setText("Turno de " + Menu_InicioSesion.UsuarioActivo.getNombUsuario());
+        jLabel1.setIcon(new ImageIcon(getClass().getResource("/ghosts_Proyecto/res/ghost.png")));
         this.pack();
         
         
@@ -110,65 +112,125 @@ public class JuegoTablero extends javax.swing.JFrame {
    //**************************INCOMPLETO*****************
     //este metodo comprobara si en la posicion que se eligio mover, hay algun fantasma rival
     //SHF significa: Si Hay Fantasma
-    public boolean comprobarSHF_rival(int fila, int columna,int playerRival){
-        int cantComponents = Tablero[fila][columna].getComponentCount();//este variable almacenara el valor de cuantos componentes hay en dicha posicion
-        Component comp = Tablero[fila][columna].getComponent(cantComponents == 1?0:1);
-        Ghosts fant = (Ghosts) comp;//esta variable almacena toda la informacion del fantasmita que se encuentre en esa posicion
+    //************ACA VOY EDITANDO**************
+    public boolean comprobarSHF_rival(){
+        int playerRival = playerTurno % 2 == 0?0:1;
+        Ghosts fant = (Ghosts) fantasma;//esta variable almacena toda la informacion del fantasmita que se encuentre en esa posicion
         for(int i = 0 ; i < cantGhosts; i ++){
-            if(ghosts[playerRival][i].getName().equals(fant.getName())){
-                
+            String nombregh = ghosts[playerRival][i].getName();
+            String nombFantEsta = fant.getName();
+            if(nombregh.equals(nombFantEsta)){
+                JOptionPane.showMessageDialog(null,"Se ha comido un fantasma rival","Error",JOptionPane.ERROR_MESSAGE);
+                return true;
             }
         }
-        return false;
+       return false;
     }
-    public void moverPieza(){
+//estas variables seran usadas en el metodo comprobarEC para ser utilizadas en el metodo moverPieza y son la posicion
+// en donde se le da click y seran la posicion en el tablero en cual esta
+    int posFila;
+    int posColum;
+
+//*****este metodo servira para comprobar que la posicion que elija el player, sea una posicion accesible que no sea donde no puede mover********
+// EC = ESPACIO CORRECTO 
+    public boolean comprobarEC(){
         if(Ghosts.paso == true){
+                this.pack();
                 int x = Ghosts.posicionFila;
                 int y = Ghosts.posicionColumna;
             for(int i =0; i < Tablero.length; i ++){
-                for(int m = 0; m< 6; m++){
-                    // este if evalua que no se eleija una posicion fuera del area de juego, recordando que las columnas
+                // este if evalua que no se eleija una posicion fuera del area de juego, recordando que las columnas
                     // de afuera son solo para las salidas del castillo.
-                    if(Tablero[i][0].getMousePosition()!= null || Tablero[i][5].getMousePosition() != null){
+                if(Tablero[i][0].getMousePosition()!= null || Tablero[i][5].getMousePosition() != null){
                         JOptionPane.showMessageDialog(null,"No puede mover aca","Error",JOptionPane.ERROR_MESSAGE);
-                        break;
+                        posFila = 0;
+                        posColum = 0;
+                        return false;
                     }
-                    else{
-                        if(Tablero[i][m].getMousePosition() != null){
-                            int cantidad = Tablero[x][y].getComponentCount();
-//esta variable ii la creo porque cuando es el player 1 en el if que sigue debe ser x+1 y cuando es player2 se resta.
+                for(int m = 0; m< 6; m++){
+                    if(Tablero[i][m].getMousePosition() != null){
+    //esta variable ii la creo porque cuando es el player 1 en el if que sigue debe ser x+1 y cuando es player2 se resta.
                             int ii =  (playerTurno % 2) != 0? x+1: x-1;    
 //este if es el que comprueba que no se vaya a mover el fantasmita mas de una posicion o que no se mueva hacia atras.
 // se suman un numero cuando es un movimiento del player 1, pero en caso que sea el player 2 se debe restar.
                                 if((i == (ii) && y == m) || (i == x && ((m == y+1) || (m == y-1))) ){
-                                    Component comp = Tablero[x][y].getComponent(cantidad == 1?0:1);
-                                    comp.setLocation(Tablero[i][m].getLocation());
-                                    Ghosts compon = (Ghosts) comp;
-                                    compon.setBorder(null);
-                                    this.pack();
-                                    Tablero[i][m].add(comp);
-                                    Tablero[x][y].remove(comp);
-                                    JOptionPane.showMessageDialog(null,"se ha movido un fantasma " + compon.getTipFantas(),"Info.",JOptionPane.INFORMATION_MESSAGE);
-                                    Ghosts.paso = false;//esta es la variable que declare en la clase ghost.
-                                    playerTurno += 1;
-                                    if(playerTurno % 2 == 0){
-                                        jLabel2.setText("Turno de player " + Player_2.usuarioActivo2);
-                                        jLabel1.setIcon(new ImageIcon(getClass().getResource("/ghosts_Proyecto/res/ghostnegro.jpg")));
-                                    }
-                                    else{
-                                        jLabel2.setText("Turno de player "+ Menu_InicioSesion.UsuarioActivo.getNombUsuario());
-                                        jLabel1.setIcon(new ImageIcon(getClass().getResource("/ghosts_Proyecto/res/ghost.png")));
-                                    }
-                                    break;
-                                }
-                                else{
-                                    JOptionPane.showMessageDialog(null,"No se puede mover mas de 1 espacio, porfavor solo mueva o a los lados o hacia adelante","Error",JOptionPane.ERROR_MESSAGE);
+                                    posFila = i;
+                                    posColum = m;
+                                    return true;
                                 }
                         }
-                    }    
+
                 }
             }
+            JOptionPane.showMessageDialog(null,"No se puede mover mas de 1 espacio, porfavor solo mueva o a los lados o hacia adelante","Error",JOptionPane.ERROR_MESSAGE);
+            posFila = 0;
+            posColum = 0;
+        }    
+        else if(Ghosts.paso == false){
+                return false;
+            }
+        return false;
     }
+//en esta variable se almacenara el fantasma si se comprueba que hay a la posicion donde se desea mover
+    Component fantasma;
+/************este metodo servira para comprobar si hay algun fantasmita ya ocupando el espacio donde se desea mover
+ SHF SIGNIFICA: SI HAY FANTASMA**********/    
+    public boolean comprobarSHF(){
+        if(Ghosts.paso == true){
+                this.pack();
+                int x = Ghosts.posicionFila;
+                int y = Ghosts.posicionColumna;
+            for(int i =0; i < Tablero.length; i ++){
+                for(int m = 0; m< 6; m++){
+                    if(Tablero[i][m].getMousePosition() != null){
+                        int cantidad = Tablero[i][m].getComponentCount();
+  //***********voy por aca editando*****************
+                        if(cantidad == 0){
+                            return false;
+                        }
+                        for(int p = 0; p < cantidad;p++){
+                            Component comp = Tablero[i][m].getComponent(p);
+                            try {
+                                Ghosts nm = (Ghosts) comp;
+                                
+                            } catch (Exception e) {
+                                continue;
+                            }
+                            JOptionPane.showMessageDialog(null,"Donde desea mover, ya esta ocupado ","Error.",JOptionPane.ERROR_MESSAGE);
+                            fantasma = comp;
+                            return true;
+                        }
+                        return false;
+                    }
+
+                }
+            }
+        }    
+        return false;
+    }
+    public void moverPieza(int filT, int colT){
+            //estas 2 variables almacenan el dato de la fila y columna donde se encuentra el fantasmista al cual se le dio click para mover    
+            int filGH = Ghosts.posicionFila;
+            int colGH = Ghosts.posicionColumna;
+            int cantidad = Tablero[filGH][colGH].getComponentCount();
+            Component comp = Tablero[filGH][colGH].getComponent(cantidad == 1?0:1);
+            comp.setLocation(Tablero[filT][colT].getLocation());
+            Ghosts compon = (Ghosts) comp;
+            compon.setBorder(null);
+            this.pack();
+            Tablero[filT][colT].add(comp);
+            Tablero[filGH][colGH].remove(comp);
+            JOptionPane.showMessageDialog(null,"se ha movido un fantasma " + compon.getTipFantas(),"Info.",JOptionPane.INFORMATION_MESSAGE);
+            Ghosts.paso = false;//esta es la variable que declare en la clase ghost.
+            playerTurno += 1;
+            if(playerTurno % 2 == 0){
+                jLabel2.setText("Turno de  " + Player_2.usuarioActivo2);
+                jLabel1.setIcon(new ImageIcon(getClass().getResource("/ghosts_Proyecto/res/ghostnegro.jpg")));
+            }
+            else{
+                jLabel2.setText("Turno de  "+ Menu_InicioSesion.UsuarioActivo.getNombUsuario());
+                jLabel1.setIcon(new ImageIcon(getClass().getResource("/ghosts_Proyecto/res/ghost.png")));
+            }
     this.pack();
     }
 
@@ -533,9 +595,17 @@ public class JuegoTablero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        
-        moverPieza();
-    
+
+        if(comprobarEC() == true ){
+            if(comprobarSHF() == false){
+                moverPieza(posFila,posColum);
+            }
+            else{
+                if(comprobarSHF_rival() == true){
+
+                }
+            }
+        } 
     }//GEN-LAST:event_formMouseClicked
 
     private void tableroPanelPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tableroPanelPropertyChange
@@ -550,13 +620,11 @@ public class JuegoTablero extends javax.swing.JFrame {
         if(playerTurno % 2 == 0){
             JOptionPane.showMessageDialog(null,Menu_InicioSesion.UsuarioActivo.getNombUsuario()+" se ha retirado","Retirado",JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
-            Menu_principal mp = new Menu_principal();//aca creo un objeto de la clase inicio_sesion
-            mp.setVisible(true);
+            Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
         }
         else{
             JOptionPane.showMessageDialog(null,Menu_InicioSesion.UsuarioActivo.getNombUsuario()+" se ha retirado","Retirado",JOptionPane.INFORMATION_MESSAGE);
-            Menu_principal mp = new Menu_principal();//aca creo un objeto de la clase inicio_sesion
-            mp.setVisible(true);
+            Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
         }
         this.dispose();
     }//GEN-LAST:event_jBt_RetirarseActionPerformed

@@ -12,12 +12,12 @@ public class Menu_principal extends javax.swing.JFrame {
         Menu_configuracion mc=new Menu_configuracion();
         Menu_reportes mr=new Menu_reportes();
         Como_jugar cmj= new Como_jugar();
-        Player_2 p2=new Player_2();
     
     
     public Menu_principal() {
         initComponents();
         setLocationRelativeTo(null);//esto hace que la panatalla aparezca en medio
+        jLabel3.setText(Menu_InicioSesion.UsuarioActivo.getNombUsuario());
     }
 
    
@@ -164,6 +164,7 @@ public class Menu_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_juegaActionPerformed
 
     private void jb_JugarGhostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_JugarGhostActionPerformed
+        Player_2 p2=new Player_2();
         p2.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jb_JugarGhostActionPerformed
