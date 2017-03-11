@@ -90,10 +90,10 @@ public class Ghosts extends JLabel implements MouseListener{
         }
     }
 /*
-    esta variable de tipo Ghost almacenara el ultimo fantasmita al cual se le clickeo, esto servira para quitar el borde
+    esta variable de tipo String almacenara el ultimo fantasmita al cual se le clickeo, esto servira para quitar el borde
     cuando se seleccione otro fantasmita
     */
-    Ghosts nms ;
+    String lastGhost = " ";
     public static boolean paso = false;//esta variable la creo para que cuando se de click en cualquier espacio en el tablero
     // no haga nada hasta que esta variable haya sido cambiada a true.
     @Override
@@ -118,6 +118,8 @@ public class Ghosts extends JLabel implements MouseListener{
                 this.buscarPosicion();//este metodo almacena la fila y la columna del arreglo Tablero donde se ence=uentra el fantasmita que damos click.
                 contador = 1;
                 paso = true;
+                lastGhost = this.getName();
+                
             }
         }
         else if(contador == 1){
