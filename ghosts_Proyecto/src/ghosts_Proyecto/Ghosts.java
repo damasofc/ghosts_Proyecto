@@ -89,11 +89,7 @@ public class Ghosts extends JLabel implements MouseListener{
             }
         }
     }
-/*
-    esta variable de tipo String almacenara el ultimo fantasmita al cual se le clickeo, esto servira para quitar el borde
-    cuando se seleccione otro fantasmita
-    */
-    String lastGhost = " ";
+    
     public static boolean paso = false;//esta variable la creo para que cuando se de click en cualquier espacio en el tablero
     // no haga nada hasta que esta variable haya sido cambiada a true.
     @Override
@@ -115,10 +111,38 @@ public class Ghosts extends JLabel implements MouseListener{
             }
             if(confirm == true){
                 this.setBorder(BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51), 1));
+/*
+   **********Este codigo que empieza aca, servira para quitarle el borde rojo, al dar click en otro fantasmita, asi
+                siempre estara marcado de rojo, solo el fantasmita que se va a mover, o el que desea mover************
+                */                
+                String ultimoGhost = JuegoTablero.lastGhost;
+                if(ultimoGhost != " "){
+                    if(ultimoGhost.equals(this.getName()) == false){
+                        for(int i =0; i <JuegoTablero.Tablero.length; i++){
+                            for(int m = 0; m <6;m++){
+                                int count = JuegoTablero.Tablero[i][m].getComponentCount();
+                                for(int s = 0; s < count ; s++){
+                                    Component com = JuegoTablero.Tablero[i][m].getComponent(s);
+                                    Ghosts xw;
+                                    try {
+                                        xw = (Ghosts) com;
+                                    } catch (Exception em) {
+                                        continue;
+                                    }
+                                    if(xw.getName().equals(JuegoTablero.lastGhost)){
+                                        xw.setBorder(null);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+//***********Aca finaliza el codigo que explique arriba acerca del borde rojo************************                
                 this.buscarPosicion();//este metodo almacena la fila y la columna del arreglo Tablero donde se ence=uentra el fantasmita que damos click.
                 contador = 1;
                 paso = true;
-                lastGhost = this.getName();
+                JuegoTablero.lastGhost = this.getName();
                 
             }
         }
@@ -129,7 +153,6 @@ public class Ghosts extends JLabel implements MouseListener{
             contador = 0;
             paso = false;
         }
-        
         
     }
 

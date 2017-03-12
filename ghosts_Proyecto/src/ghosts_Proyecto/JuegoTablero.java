@@ -12,7 +12,7 @@ import javax.swing.*;
 
 
 public class JuegoTablero extends javax.swing.JFrame {
-    public int cantGhosts = 8;
+    public int cantGhosts = 2;
 /*
     esta arreglo llamado sumaGhosts, es el que almacenara la cantidad de fantasmas malos y buenos que tendra
     cada uno de los player, entonces en la posicion [0][0], el valor que se almacenara sera la cantidad de fantasmas buenos
@@ -27,7 +27,12 @@ public class JuegoTablero extends javax.swing.JFrame {
     public int contadorbuenos = 0;
     public int contadorMalos = 0;
     public int contador = 0;
-    public static int playerTurno = 1;//esta variable estara cambiando constantemente para evaluar el turno de quien va   
+    public static int playerTurno = 1;//esta variable estara cambiando constantemente para evaluar el turno de quien va  
+    /*
+    esta variable de tipo String almacenara el ultimo fantasmita al cual se le clickeo, esto servira para quitar el borde
+    cuando se seleccione otro fantasmita
+    */
+    public static String lastGhost = " ";
     
 
     public void almacenarPaneles(){
@@ -87,6 +92,7 @@ public class JuegoTablero extends javax.swing.JFrame {
         contadorMalos = 0;
         contadorbuenos = 0;
     }
+//****este metodo coloca todos los fantasmas en el tablero    
     public void cargarFantasmas(int player){
         JPanel[][] x = player == 0?cuadrosPlayer1:cuadrosPlayer2;
         int r = 0;
@@ -99,7 +105,13 @@ public class JuegoTablero extends javax.swing.JFrame {
                 }
             }
             for(int m = 0; m<y;m++){
+//este if lo que hace es que si solo se colocaran 2 fantasmas, entonces ponerlos en medio para iniciar con el juego.
+                if(cantGhosts == 2){
+                    x[i][m+1].add(ghosts[player][r]);
+                }
+                else{
                 x[i][m].add(ghosts[player][r]);
+                }
                 r++;
             }
         }
@@ -144,6 +156,37 @@ public class JuegoTablero extends javax.swing.JFrame {
         }
        return false;
     }
+/*
+    Este meetodo como lo dice su Nombre: Determinar Si Hay Ganador, cada vez despues de un movimiento de piezas, o despues de comer,
+    va a estar viendo si ya hay algun ganador o no
+    */    
+    public void determinarSHGanador(){
+        String py1 = Menu_InicioSesion.UsuarioActivo.getNombUsuario();
+        String py2 = Player_2.usuarioActivo2;
+        if(sumaGhosts[0][0] != 0 && sumaGhosts[0][1] == 0){
+            JOptionPane.showMessageDialog(null,py1+ " ha ganado, porque "+py2+" le capturo todos sus fantasmas malos","Ganador",JOptionPane.INFORMATION_MESSAGE);
+            Menu_InicioSesion.UsuarioActivo.setPuntos(Menu_InicioSesion.UsuarioActivo.getPuntos() + 3);
+            this.dispose();
+            Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
+        }
+        else if(sumaGhosts[0][0] == 0 && sumaGhosts[0][1] != 0){
+            JOptionPane.showMessageDialog(null,py2+ " ha ganado, porque capturo todos los fantasmas buenos de " +py1,"Ganador",JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+            Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
+        }
+        else if(sumaGhosts[1][0] == 0 && sumaGhosts[1][1] != 0){
+            JOptionPane.showMessageDialog(null,py1+ " ha ganado, porque capturo todos los fantasmas buenos de " +py2,"Ganador",JOptionPane.INFORMATION_MESSAGE);
+            Menu_InicioSesion.UsuarioActivo.setPuntos(Menu_InicioSesion.UsuarioActivo.getPuntos() + 3);
+            this.dispose();
+            Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
+        }
+        else if(sumaGhosts[1][0] != 0 && sumaGhosts[1][1] == 0){
+            JOptionPane.showMessageDialog(null,py2+ " ha ganado, porque "+py1+" le capturo todos sus fantasmas malos","Ganador",JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+            Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
+        }
+        
+    }
     public void comerPieza(int x, int y){
         int numComp = Tablero[posFila][posColum].getComponentCount();
         for(int i = 0; i < numComp;i++){
@@ -174,7 +217,8 @@ public class JuegoTablero extends javax.swing.JFrame {
                         sumaGhosts[1][1] -= 1;
                     }
                 }
-                JOptionPane.showMessageDialog(null,"Se ha comido un fantasma rival, " + tipoft,"Bien",JOptionPane.INFORMATION_MESSAGE);
+                String Rival = playerTurno%2 == 0?Menu_InicioSesion.UsuarioActivo.getNombUsuario():Player_2.usuarioActivo2;
+                JOptionPane.showMessageDialog(null,"Se ha comido un fantasma rival, " + tipoft+" de "+ Rival ,"Bien",JOptionPane.INFORMATION_MESSAGE);
             }
         }
         this.pack();
@@ -238,7 +282,6 @@ public class JuegoTablero extends javax.swing.JFrame {
                 for(int m = 0; m< 6; m++){
                     if(Tablero[i][m].getMousePosition() != null){
                         int cantidad = Tablero[i][m].getComponentCount();
-  //***********voy por aca editando*****************
                         if(cantidad == 0){
                             return false;
                         }
@@ -663,7 +706,6 @@ public class JuegoTablero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        System.out.println(Tablero[3][4].getComponentCount());
         if(comprobarEC() == true ){
             if(comprobarSHF() == false){
                 moverPieza(posFila,posColum);
@@ -672,6 +714,7 @@ public class JuegoTablero extends javax.swing.JFrame {
                 if(comprobarSHF_rival() == true){
                     comerPieza(filFanCom,colFanCom);
                     moverPieza(posFila, posColum);
+                    determinarSHGanador();
 
                 }
                 else{
