@@ -12,7 +12,7 @@ import javax.swing.*;
 
 
 public class JuegoTablero extends javax.swing.JFrame {
-    public int cantGhosts = 2;
+    public int cantGhosts = 8;
 /*
     esta arreglo llamado sumaGhosts, es el que almacenara la cantidad de fantasmas malos y buenos que tendra
     cada uno de los player, entonces en la posicion [0][0], el valor que se almacenara sera la cantidad de fantasmas buenos
