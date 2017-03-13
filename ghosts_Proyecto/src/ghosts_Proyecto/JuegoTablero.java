@@ -33,6 +33,9 @@ public class JuegoTablero extends javax.swing.JFrame {
     cuando se seleccione otro fantasmita
     */
     public static String lastGhost = " ";
+//esta variable es la que hara que si es Aleatorio, pues pondra los fantasmitas de manera aletoria, pero
+// si es Normal, entonces los fantasmitas los colocara cada uno de los players, donde ellos quieran
+    public static String modoJuego = "Aleatorio";
     
 
     public void almacenarPaneles(){
@@ -97,23 +100,28 @@ public class JuegoTablero extends javax.swing.JFrame {
         JPanel[][] x = player == 0?cuadrosPlayer1:cuadrosPlayer2;
         int r = 0;
         int y = cantGhosts/2;
-        for(int i = 0; i < x.length; i++){
-            if(cantGhosts < 5){
-                y = cantGhosts;
-                if(i == 1){
-                    break;
+        if(modoJuego == "Aleatorio"){
+            for(int i = 0; i < x.length; i++){
+                if(cantGhosts < 5){
+                    y = cantGhosts;
+                    if(i == 1){
+                        break;
+                    }
+                }
+                for(int m = 0; m<y;m++){
+    //este if lo que hace es que si solo se colocaran 2 fantasmas, entonces ponerlos en medio para iniciar con el juego.
+                    if(cantGhosts == 2){
+                        x[i][m+1].add(ghosts[player][r]);
+                    }
+                    else{
+                    x[i][m].add(ghosts[player][r]);
+                    }
+                    r++;
                 }
             }
-            for(int m = 0; m<y;m++){
-//este if lo que hace es que si solo se colocaran 2 fantasmas, entonces ponerlos en medio para iniciar con el juego.
-                if(cantGhosts == 2){
-                    x[i][m+1].add(ghosts[player][r]);
-                }
-                else{
-                x[i][m].add(ghosts[player][r]);
-                }
-                r++;
-            }
+        }
+        else{
+            
         }
     }
     public JuegoTablero() {
@@ -224,6 +232,7 @@ public class JuegoTablero extends javax.swing.JFrame {
         this.pack();
         
     }
+
 //estas variables seran usadas en el metodo comprobarEC para ser utilizadas en el metodo moverPieza y son la posicion
 // en donde se le da click y seran la posicion en el tablero en cual esta
     int posFila;
@@ -267,6 +276,30 @@ public class JuegoTablero extends javax.swing.JFrame {
         else if(Ghosts.paso == false){
                 return false;
             }
+        return false;
+    }
+    public boolean comprobarSalidaCastillo(){
+        if(Ghosts.paso == true){
+                this.pack();
+                int x = Ghosts.posicionFila;
+                int y = Ghosts.posicionColumna;
+                if((x == 0 || x == 5) && (y == 1 || y == 4)){
+                    for(int i = 0; i < 6 ; i++){
+                        if(i == 0 || i == 5){
+                            if(Tablero[i][0].getMousePosition()!= null || Tablero[i][5].getMousePosition() != null){
+                            String Pierde = playerTurno%2 == 0?Player_2.usuarioActivo2:Menu_InicioSesion.UsuarioActivo.getNombUsuario();
+                            String Gana = playerTurno%2 == 0?Menu_InicioSesion.UsuarioActivo.getNombUsuario():Player_2.usuarioActivo2;
+                            JOptionPane.showMessageDialog(null,Pierde + " salio del castillo, y ha perdido, el ganador es " + Gana ,":( Que mal!",JOptionPane.INFORMATION_MESSAGE);
+                            return true;
+                            }
+                        }
+                        else{
+                            continue;
+                        }    
+                    }    
+                }
+
+        }
         return false;
     }
 //en esta variable se almacenara el fantasma si se comprueba que hay a la posicion donde se desea mover
@@ -711,22 +744,28 @@ public class JuegoTablero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        if(comprobarEC() == true ){
-            if(comprobarSHF() == false){
-                moverPieza(posFila,posColum);
-            }
-            else{
-                if(comprobarSHF_rival() == true){
-                    comerPieza(filFanCom,colFanCom);
-                    moverPieza(posFila, posColum);
-                    determinarSHGanador();
-
+        if(comprobarSalidaCastillo() == true){
+            this.dispose();
+            Menu_InicioSesion.mp.setVisible(true);
+        }
+        else{
+            if(comprobarEC() == true ){
+                if(comprobarSHF() == false){
+                    moverPieza(posFila,posColum);
                 }
                 else{
-                    JOptionPane.showMessageDialog(null,"Donde desea mover, ya esta ocupado ","Error.",JOptionPane.ERROR_MESSAGE);
+                    if(comprobarSHF_rival() == true){
+                        comerPieza(filFanCom,colFanCom);
+                        moverPieza(posFila, posColum);
+                        determinarSHGanador();
+
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null,"Donde desea mover, ya esta ocupado ","Error.",JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
-        } 
+        }
     }//GEN-LAST:event_formMouseClicked
 
     private void tableroPanelPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tableroPanelPropertyChange
