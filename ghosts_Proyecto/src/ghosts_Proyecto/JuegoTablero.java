@@ -401,6 +401,7 @@ public class JuegoTablero extends javax.swing.JFrame {
         jlb_fantsBuenos = new javax.swing.JLabel();
         jlb_fantsMalos = new javax.swing.JLabel();
         jBt_Retirarse = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(916, 630));
@@ -701,6 +702,10 @@ public class JuegoTablero extends javax.swing.JFrame {
         });
         getContentPane().add(jBt_Retirarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 470, -1, -1));
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ghosts_Proyecto/res/fondo-de-madera-2831.jpg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 610));
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -761,6 +766,7 @@ public class JuegoTablero extends javax.swing.JFrame {
     private javax.swing.JButton jBt_Retirarse;
     private javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;

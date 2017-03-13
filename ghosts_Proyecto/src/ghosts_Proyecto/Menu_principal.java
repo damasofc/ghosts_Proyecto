@@ -33,12 +33,16 @@ public class Menu_principal extends javax.swing.JFrame {
         jb_Salir = new javax.swing.JButton();
         jb_juega = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Menu Principal");
         jLabel1.setMaximumSize(new java.awt.Dimension(70, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 11, 290, 55));
 
         jb_JugarGhost.setText("Jugar Ghost");
         jb_JugarGhost.addActionListener(new java.awt.event.ActionListener() {
@@ -46,6 +50,7 @@ public class Menu_principal extends javax.swing.JFrame {
                 jb_JugarGhostActionPerformed(evt);
             }
         });
+        getContentPane().add(jb_JugarGhost, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 120, -1));
 
         jb_Configuracion.setText("Configuracion");
         jb_Configuracion.addActionListener(new java.awt.event.ActionListener() {
@@ -53,6 +58,7 @@ public class Menu_principal extends javax.swing.JFrame {
                 jb_ConfiguracionActionPerformed(evt);
             }
         });
+        getContentPane().add(jb_Configuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 120, -1));
 
         jb_Reportes.setText("Reportes");
         jb_Reportes.addActionListener(new java.awt.event.ActionListener() {
@@ -60,6 +66,7 @@ public class Menu_principal extends javax.swing.JFrame {
                 jb_ReportesActionPerformed(evt);
             }
         });
+        getContentPane().add(jb_Reportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 120, -1));
 
         jb_Miperfil.setText("Mi Perfil");
         jb_Miperfil.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +74,7 @@ public class Menu_principal extends javax.swing.JFrame {
                 jb_MiperfilActionPerformed(evt);
             }
         });
+        getContentPane().add(jb_Miperfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 120, -1));
 
         jb_Salir.setText("Cerrar Sesion");
         jb_Salir.addActionListener(new java.awt.event.ActionListener() {
@@ -74,6 +82,7 @@ public class Menu_principal extends javax.swing.JFrame {
                 jb_SalirActionPerformed(evt);
             }
         });
+        getContentPane().add(jb_Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, -1, -1));
 
         jb_juega.setText("Como se juega");
         jb_juega.addActionListener(new java.awt.event.ActionListener() {
@@ -81,58 +90,15 @@ public class Menu_principal extends javax.swing.JFrame {
                 jb_juegaActionPerformed(evt);
             }
         });
+        getContentPane().add(jb_juega, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 120, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("usuario");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 91, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(122, 122, 122))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(jb_Salir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 340, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jb_JugarGhost, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jb_Configuracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jb_Reportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jb_Miperfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jb_juega))))
-                .addGap(33, 33, 33))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(jb_JugarGhost)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jb_Configuracion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jb_Reportes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jb_Miperfil)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jb_juega)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jb_Salir)
-                    .addComponent(jLabel3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ghosts_Proyecto/res/3299645895_19639a3730.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 210));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -181,6 +147,7 @@ public class Menu_principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JButton jb_Configuracion;
     private javax.swing.JButton jb_JugarGhost;

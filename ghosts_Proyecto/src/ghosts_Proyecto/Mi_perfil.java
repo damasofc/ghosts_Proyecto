@@ -35,15 +35,21 @@ public class Mi_perfil extends javax.swing.JFrame {
         jb_password = new javax.swing.JButton();
         jb_eliminar = new javax.swing.JButton();
         jb_reg = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Mi Perfil");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 19, 151, -1));
 
         ta_Pantalla.setColumns(20);
         ta_Pantalla.setRows(5);
         jScrollPane1.setViewportView(ta_Pantalla);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 81, 360, 184));
 
         jb_miperfil.setText("Ver perfil");
         jb_miperfil.addActionListener(new java.awt.event.ActionListener() {
@@ -51,6 +57,7 @@ public class Mi_perfil extends javax.swing.JFrame {
                 jb_miperfilActionPerformed(evt);
             }
         });
+        getContentPane().add(jb_miperfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 103, 150, -1));
 
         jb_password.setText("Cambiar Contraseña");
         jb_password.addActionListener(new java.awt.event.ActionListener() {
@@ -58,6 +65,7 @@ public class Mi_perfil extends javax.swing.JFrame {
                 jb_passwordActionPerformed(evt);
             }
         });
+        getContentPane().add(jb_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 137, 150, -1));
 
         jb_eliminar.setText("Eliminar cuenta");
         jb_eliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -65,6 +73,7 @@ public class Mi_perfil extends javax.swing.JFrame {
                 jb_eliminarActionPerformed(evt);
             }
         });
+        getContentPane().add(jb_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 171, 150, -1));
 
         jb_reg.setText("Regresar");
         jb_reg.addActionListener(new java.awt.event.ActionListener() {
@@ -72,46 +81,11 @@ public class Mi_perfil extends javax.swing.JFrame {
                 jb_regActionPerformed(evt);
             }
         });
+        getContentPane().add(jb_reg, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 205, 150, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jb_password, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jb_miperfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jb_eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jb_reg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(196, 196, 196))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(jb_miperfil)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jb_password)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jb_eliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jb_reg)))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ghosts_Proyecto/res/MG_9730-copia.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 290));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -176,6 +150,7 @@ public class Mi_perfil extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jb_eliminar;
     private javax.swing.JButton jb_miperfil;
