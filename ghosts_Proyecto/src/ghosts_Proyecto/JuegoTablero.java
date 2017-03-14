@@ -440,8 +440,8 @@ public class JuegoTablero extends javax.swing.JFrame {
             if(playerTurno % 2 == 0){
                 jLabel2.setText("Turno de  " + Player_2.usuarioActivo2);
                 jLabel1.setIcon(new ImageIcon(getClass().getResource("/ghosts_Proyecto/res/ghostnegro.jpg")));
-                jlb_fantsBuenos.setText("Fantasmas Buenos de " + Player_2.usuarioActivo2 + " " + sumaGhosts[1][0]);
-                jlb_fantsMalos.setText("Fantasmas Malos de " + Player_2.usuarioActivo2 + " " + sumaGhosts[1][1]);
+                jlb_fantsBuenos.setText("Fantasmas Buenos de " + Player_2.usuarioActivo2.getNombUsuario() + " " + sumaGhosts[1][0]);
+                jlb_fantsMalos.setText("Fantasmas Malos de " + Player_2.usuarioActivo2.getNombUsuario() + " " + sumaGhosts[1][1]);
             }
             else{
                 jLabel2.setText("Turno de  "+ Menu_InicioSesion.UsuarioActivo.getNombUsuario());
@@ -860,13 +860,18 @@ public class JuegoTablero extends javax.swing.JFrame {
     }//GEN-LAST:event_tableroPanelComponentAdded
 
     private void jBt_RetirarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBt_RetirarseActionPerformed
+        String reporte= "";
         if(playerTurno % 2 == 0){
-            JOptionPane.showMessageDialog(null, Player_2.usuarioActivo2+" se ha retirado","Retirado",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, Player_2.usuarioActivo2.getNombUsuario()+" se ha retirado","Retirado",JOptionPane.INFORMATION_MESSAGE);
+            reporte = Menu_InicioSesion.UsuarioActivo.getNombUsuario()+" Gano, porque " + Player_2.usuarioActivo2.getNombUsuario() +" se retiro";
+            aggReporte(reporte,Menu_InicioSesion.UsuarioActivo.getNombUsuario(), Player_2.usuarioActivo2.getNombUsuario());
             this.dispose();
             Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
         }
         else{
             JOptionPane.showMessageDialog(null,Menu_InicioSesion.UsuarioActivo.getNombUsuario()+" se ha retirado","Retirado",JOptionPane.INFORMATION_MESSAGE);
+            reporte = Player_2.usuarioActivo2.getNombUsuario()+" Gano, porque " + Menu_InicioSesion.UsuarioActivo.getNombUsuario() +" se retiro";
+            aggReporte(reporte,Menu_InicioSesion.UsuarioActivo.getNombUsuario(), Player_2.usuarioActivo2.getNombUsuario());
             Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
         }
         this.dispose();
