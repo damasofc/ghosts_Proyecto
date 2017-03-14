@@ -171,30 +171,68 @@ public class JuegoTablero extends javax.swing.JFrame {
     */    
     public void determinarSHGanador(){
         String py1 = Menu_InicioSesion.UsuarioActivo.getNombUsuario();
-        String py2 = Player_2.usuarioActivo2;
+        String py2 = Player_2.usuarioActivo2.getNombUsuario();
+        String reporte = "";
         if(sumaGhosts[0][0] != 0 && sumaGhosts[0][1] == 0){
             JOptionPane.showMessageDialog(null,py1+ " ha ganado, porque "+py2+" le capturo todos sus fantasmas malos","Ganador",JOptionPane.INFORMATION_MESSAGE);
+            reporte = py1+ " ha ganado, porque "+py2+" le capturo todos sus fantasmas malos";
             Menu_InicioSesion.UsuarioActivo.setPuntos(Menu_InicioSesion.UsuarioActivo.getPuntos() + 3);
             this.dispose();
             Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
         }
         else if(sumaGhosts[0][0] == 0 && sumaGhosts[0][1] != 0){
             JOptionPane.showMessageDialog(null,py2+ " ha ganado, porque capturo todos los fantasmas buenos de " +py1,"Ganador",JOptionPane.INFORMATION_MESSAGE);
+            reporte = py2+ " ha ganado, porque capturo todos los fantasmas buenos de " +py1;
             this.dispose();
             Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
         }
         else if(sumaGhosts[1][0] == 0 && sumaGhosts[1][1] != 0){
             JOptionPane.showMessageDialog(null,py1+ " ha ganado, porque capturo todos los fantasmas buenos de " +py2,"Ganador",JOptionPane.INFORMATION_MESSAGE);
+            reporte = py1+ " ha ganado, porque capturo todos los fantasmas buenos de " +py2;
             Menu_InicioSesion.UsuarioActivo.setPuntos(Menu_InicioSesion.UsuarioActivo.getPuntos() + 3);
             this.dispose();
             Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
         }
         else if(sumaGhosts[1][0] != 0 && sumaGhosts[1][1] == 0){
             JOptionPane.showMessageDialog(null,py2+ " ha ganado, porque "+py1+" le capturo todos sus fantasmas malos","Ganador",JOptionPane.INFORMATION_MESSAGE);
+            reporte = py2+ " ha ganado, porque "+py1+" le capturo todos sus fantasmas malos";
             this.dispose();
             Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
         }
+        aggReporte(reporte, py1, py2);
         
+    }
+    //este metodo servira para agregar un reporte al usuario que este activo y al rival con el que esta jugando
+    public boolean aggReporte(String report,String name1, String nam2){
+        int contador = 0;
+        for(int i =0; i < 100;i++){
+            if(MainProyecto.usuarios[i].getNombUsuario().equals(name1) && contador == 0){
+                for(int x = 0 ; x < 10;x++){
+                    String reporte = MainProyecto.usuarios[i].getReporte(x);
+                    if(reporte == ""){
+                        MainProyecto.usuarios[i].setReporte(report, x);
+                        contador += 1;
+                        break;
+                    }
+                }
+
+            }
+            else if(MainProyecto.usuarios[i].getNombUsuario().equals(nam2) && contador == 1){
+                for(int x = 0 ; x < 10;x++){
+                    String reporte = MainProyecto.usuarios[i].getReporte(x);
+                    if(reporte == ""){
+                        MainProyecto.usuarios[i].setReporte(report, x);
+                        contador += 1;
+                        break;
+                    }
+                }
+
+            }
+            else if(contador == 2){
+                break;
+            }
+        }
+        return true;
     }
     public void comerPieza(int x, int y){
         int numComp = Tablero[posFila][posColum].getComponentCount();
@@ -226,7 +264,7 @@ public class JuegoTablero extends javax.swing.JFrame {
                         sumaGhosts[1][1] -= 1;
                     }
                 }
-                String Rival = playerTurno%2 == 0?Menu_InicioSesion.UsuarioActivo.getNombUsuario():Player_2.usuarioActivo2;
+                String Rival = playerTurno%2 == 0?Menu_InicioSesion.UsuarioActivo.getNombUsuario():Player_2.usuarioActivo2.getNombUsuario();
                 JOptionPane.showMessageDialog(null,"Se ha comido un fantasma rival, " + tipoft+" de "+ Rival ,"Bien",JOptionPane.INFORMATION_MESSAGE);
             }
         }
@@ -279,6 +317,7 @@ public class JuegoTablero extends javax.swing.JFrame {
             }
         return false;
     }
+    public static String smsReporte = "";
     public boolean comprobarSalidaCastillo(){
         if(Ghosts.paso == true){
                 this.pack();
@@ -296,16 +335,17 @@ public class JuegoTablero extends javax.swing.JFrame {
                         continue;
                     }
                 }
-                String turno = playerTurno%2 == 0?Player_2.usuarioActivo2:Menu_InicioSesion.UsuarioActivo.getNombUsuario();
-                if(turno == Player_2.usuarioActivo2){
+                String turno = playerTurno%2 == 0?Player_2.usuarioActivo2.getNombUsuario():Menu_InicioSesion.UsuarioActivo.getNombUsuario();
+                if(turno == Player_2.usuarioActivo2.getNombUsuario()){
                     if(x == 0 && (y == 1 || y == 4)){
                         for(int i = 0; i < 6 ; i++){
                             if(i == 0 || i == 5){
                                 if(Tablero[i][0].getMousePosition()!= null || Tablero[i][5].getMousePosition() != null){
                                     if(tipFantasma == "Bueno"){
-                                        String Gana = playerTurno%2 == 0?Player_2.usuarioActivo2:Menu_InicioSesion.UsuarioActivo.getNombUsuario();
-                                        String Pierde = playerTurno%2 == 0?Menu_InicioSesion.UsuarioActivo.getNombUsuario():Player_2.usuarioActivo2;
+                                        String Gana = playerTurno%2 == 0?Player_2.usuarioActivo2.getNombUsuario():Menu_InicioSesion.UsuarioActivo.getNombUsuario();
+                                        String Pierde = playerTurno%2 == 0?Menu_InicioSesion.UsuarioActivo.getNombUsuario():Player_2.usuarioActivo2.getNombUsuario();
                                         JOptionPane.showMessageDialog(null,Gana + " le ha ganado a "+Pierde +" porque ha sacado un fantasma bueno, por la esquina contraria" ,"Ganador",JOptionPane.INFORMATION_MESSAGE);
+                                     
                                         return true;
                                     }
                                     else{
@@ -325,8 +365,8 @@ public class JuegoTablero extends javax.swing.JFrame {
                             if(i == 0 || i == 5){
                                 if(Tablero[i][0].getMousePosition()!= null || Tablero[i][5].getMousePosition() != null){
                                     if(tipFantasma == "Bueno"){
-                                        String Gana = playerTurno%2 == 0?Player_2.usuarioActivo2:Menu_InicioSesion.UsuarioActivo.getNombUsuario();
-                                        String Pierde = playerTurno%2 == 0?Menu_InicioSesion.UsuarioActivo.getNombUsuario():Player_2.usuarioActivo2;
+                                        String Gana = playerTurno%2 == 0?Player_2.usuarioActivo2.getNombUsuario():Menu_InicioSesion.UsuarioActivo.getNombUsuario();
+                                        String Pierde = playerTurno%2 == 0?Menu_InicioSesion.UsuarioActivo.getNombUsuario():Player_2.usuarioActivo2.getNombUsuario();
                                         JOptionPane.showMessageDialog(null,Gana + " le ha ganado a "+Pierde +" porque ha sacado un fantasma bueno, por la esquina contraria" ,"Ganador",JOptionPane.INFORMATION_MESSAGE);
                                         return true;
                                     }

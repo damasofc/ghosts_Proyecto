@@ -35,9 +35,11 @@ public class MainProyecto {
     public static void crearUsuario(String nombUsuario, String contra) {
         usuarios[contador].setNombUsuario(nombUsuario);//aca se hace uso del metodo set para agregar un nombre de usuario en la posicion que tenga de numero la variable contador
         usuarios[contador].setContra(contra);//aca se hace lo mismo que la de arriba solo que para la contraseña
+        for(int i = 0 ; i < 10 ; i++){
+            usuarios[contador].setReporte("", i);
+        }
         contador++;// se aumenta la variable contador para que luego que se ingrese otro usuario sea almacenado en otra posicion distinta
     }
-        
 //*******Este metodo sirve para comprobar si el nombre del usuario ya esta*************8
     public static boolean comprobarUsuario(String nombUsuario) {
         boolean k = false;

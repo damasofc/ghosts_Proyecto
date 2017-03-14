@@ -16,7 +16,7 @@ public class Player_2 extends javax.swing.JFrame {
     /**
      * Creates new form Player_2
      */
-    public static String usuarioActivo2;
+    public static Usuario usuarioActivo2;
     public Player_2() {
         initComponents();
         setLocationRelativeTo(null);
@@ -104,12 +104,17 @@ public class Player_2 extends javax.swing.JFrame {
     private void jb_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_aceptarActionPerformed
          boolean comprobar = MainProyecto.comprobarUsuario(tf_nom2.getText());//aca se llama al metodo comprobarUsuario y se almacena en la variable comprobar
         if(comprobar == true){//aca ya se evalua si el usuario esta o no esta.
-            usuarioActivo2 = tf_nom2.getText();
+            for (int x = 0; x < 100; x++) {
+                String a = MainProyecto.usuarios[x].getNombUsuario();
+                if (a.equals(tf_nom2.getText())) {
+                    usuarioActivo2 = MainProyecto.usuarios[x];
+                }
+            }
             nm = new JuegoTablero();
-            nm.setVisible(true);
             this.dispose();
+            nm.setVisible(true);
             JOptionPane.showMessageDialog(null,"Los fantasmas de "+Menu_InicioSesion.UsuarioActivo.getNombUsuario()
-                    + " son los blancos \ny los de "+Player_2.usuarioActivo2+ " son los negros","Informacion",JOptionPane.INFORMATION_MESSAGE);
+                    + " son los blancos \ny los de "+Player_2.usuarioActivo2.getNombUsuario()+ " son los negros","Informacion",JOptionPane.INFORMATION_MESSAGE);
         } 
         else{
             JOptionPane.showMessageDialog(null,"Ingrese un nombre de usuario valido","Error",JOptionPane.INFORMATION_MESSAGE);//hace que se vea la ventanita diciendo que se creo el nuevo usuario

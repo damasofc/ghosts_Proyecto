@@ -45,6 +45,7 @@ public class Mi_perfil extends javax.swing.JFrame {
         jLabel1.setText("Mi Perfil");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 19, 151, -1));
 
+        ta_Pantalla.setEditable(false);
         ta_Pantalla.setColumns(20);
         ta_Pantalla.setRows(5);
         jScrollPane1.setViewportView(ta_Pantalla);
@@ -99,7 +100,7 @@ public class Mi_perfil extends javax.swing.JFrame {
 
     private void jb_miperfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_miperfilActionPerformed
         ta_Pantalla.append("Nombre de Usuario: \n"+Menu_InicioSesion.UsuarioActivo.getNombUsuario() + "\n");
-        
+       
         ta_Pantalla.append("Contraseña: \n"+Menu_InicioSesion.UsuarioActivo.getContra());
     }//GEN-LAST:event_jb_miperfilActionPerformed
 
