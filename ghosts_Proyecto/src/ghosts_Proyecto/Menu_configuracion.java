@@ -43,6 +43,11 @@ public class Menu_configuracion extends javax.swing.JFrame {
         getContentPane().add(jb_regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 137, 118, -1));
 
         jcb_dificultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Expert", "Genius" }));
+        jcb_dificultad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcb_dificultadActionPerformed(evt);
+            }
+        });
         getContentPane().add(jcb_dificultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 73, 99, -1));
 
         jcb_modo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aleatorio", "Normal" }));
@@ -66,10 +71,27 @@ public class Menu_configuracion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jb_regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_regresarActionPerformed
-       Menu_principal mp=new Menu_principal();
-       mp.setVisible(true);
-       this.dispose();//aca se cierra esta ventana actual
+        
+        String Dificultad = jcb_dificultad.getSelectedItem().toString();
+        //condiciones dificultad
+        if("Normal".equals(Dificultad)){
+            JuegoTablero.dificulty = 8;
+        }
+        else if("Expert".equals(Dificultad)){
+            JuegoTablero.dificulty = 4;
+        }
+        else if("Genius".equals(Dificultad)){
+            JuegoTablero.dificulty = 2;
+        }
+       
+        Menu_principal mp=new Menu_principal();
+        mp.setVisible(true);
+        this.dispose();//aca se cierra esta ventana actual
     }//GEN-LAST:event_jb_regresarActionPerformed
+
+    private void jcb_dificultadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_dificultadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcb_dificultadActionPerformed
 
     
     public static void main(String args[]) {
