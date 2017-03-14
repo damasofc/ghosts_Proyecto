@@ -10,7 +10,6 @@ public class Menu_principal extends javax.swing.JFrame {
     que se podran abrir al iniciar sesion y asi poder accederlos desde una sola clase*/
         Mi_perfil mip=new Mi_perfil();
         Menu_configuracion mc=new Menu_configuracion();
-        Menu_reportes mr=new Menu_reportes();
         Como_jugar cmj= new Como_jugar();
     
     
@@ -120,6 +119,7 @@ public class Menu_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_ConfiguracionActionPerformed
 
     private void jb_ReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_ReportesActionPerformed
+        Menu_reportes mr =new Menu_reportes();
         mr.setVisible(true);
         this.dispose();//aca se cierra esta ventana actual
     }//GEN-LAST:event_jb_ReportesActionPerformed
