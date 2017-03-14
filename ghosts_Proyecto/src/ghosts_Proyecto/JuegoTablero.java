@@ -12,7 +12,8 @@ import javax.swing.*;
 
 
 public class JuegoTablero extends javax.swing.JFrame {
-    public int cantGhosts = 8;
+    public static int dificulty = 8;
+    public int cantGhosts = dificulty;
 /*
     esta arreglo llamado sumaGhosts, es el que almacenara la cantidad de fantasmas malos y buenos que tendra
     cada uno de los player, entonces en la posicion [0][0], el valor que se almacenara sera la cantidad de fantasmas buenos
@@ -283,20 +284,62 @@ public class JuegoTablero extends javax.swing.JFrame {
                 this.pack();
                 int x = Ghosts.posicionFila;
                 int y = Ghosts.posicionColumna;
-                if((x == 0 || x == 5) && (y == 1 || y == 4)){
-                    for(int i = 0; i < 6 ; i++){
-                        if(i == 0 || i == 5){
-                            if(Tablero[i][0].getMousePosition()!= null || Tablero[i][5].getMousePosition() != null){
-                            String Pierde = playerTurno%2 == 0?Player_2.usuarioActivo2:Menu_InicioSesion.UsuarioActivo.getNombUsuario();
-                            String Gana = playerTurno%2 == 0?Menu_InicioSesion.UsuarioActivo.getNombUsuario():Player_2.usuarioActivo2;
-                            JOptionPane.showMessageDialog(null,Pierde + " salio del castillo, y ha perdido, el ganador es " + Gana ,":( Que mal!",JOptionPane.INFORMATION_MESSAGE);
-                            return true;
+                int compcount = Tablero[x][y].getComponentCount();
+                String tipFantasma = " ";
+                for(int p = 0; p < compcount;p++){
+                    Component comp = Tablero[x][y].getComponent(p);
+                    try {
+                        Ghosts nm = (Ghosts) comp;
+                        tipFantasma = nm.getTipFantas();
+                        break;        
+                    } catch (Exception e) {
+                        continue;
+                    }
+                }
+                String turno = playerTurno%2 == 0?Player_2.usuarioActivo2:Menu_InicioSesion.UsuarioActivo.getNombUsuario();
+                if(turno == Player_2.usuarioActivo2){
+                    if(x == 0 && (y == 1 || y == 4)){
+                        for(int i = 0; i < 6 ; i++){
+                            if(i == 0 || i == 5){
+                                if(Tablero[i][0].getMousePosition()!= null || Tablero[i][5].getMousePosition() != null){
+                                    if(tipFantasma == "Bueno"){
+                                        String Gana = playerTurno%2 == 0?Player_2.usuarioActivo2:Menu_InicioSesion.UsuarioActivo.getNombUsuario();
+                                        String Pierde = playerTurno%2 == 0?Menu_InicioSesion.UsuarioActivo.getNombUsuario():Player_2.usuarioActivo2;
+                                        JOptionPane.showMessageDialog(null,Gana + " le ha ganado a "+Pierde +" porque ha sacado un fantasma bueno, por la esquina contraria" ,"Ganador",JOptionPane.INFORMATION_MESSAGE);
+                                        return true;
+                                    }
+                                    else{
+                                        JOptionPane.showMessageDialog(null,"Es un fantasma malo, asi que no puede salir del castillo",":( Que mal!",JOptionPane.INFORMATION_MESSAGE);
+                                    }
+                                }
                             }
-                        }
-                        else{
-                            continue;
-                        }    
-                    }    
+                            else{
+                                continue;
+                            }    
+                        } 
+                    }
+                }
+                else{
+                    if(x == 5 && (y == 4 || y == 1)){
+                        for(int i = 0; i < 6 ; i++){
+                            if(i == 0 || i == 5){
+                                if(Tablero[i][0].getMousePosition()!= null || Tablero[i][5].getMousePosition() != null){
+                                    if(tipFantasma == "Bueno"){
+                                        String Gana = playerTurno%2 == 0?Player_2.usuarioActivo2:Menu_InicioSesion.UsuarioActivo.getNombUsuario();
+                                        String Pierde = playerTurno%2 == 0?Menu_InicioSesion.UsuarioActivo.getNombUsuario():Player_2.usuarioActivo2;
+                                        JOptionPane.showMessageDialog(null,Gana + " le ha ganado a "+Pierde +" porque ha sacado un fantasma bueno, por la esquina contraria" ,"Ganador",JOptionPane.INFORMATION_MESSAGE);
+                                        return true;
+                                    }
+                                    else{
+                                        JOptionPane.showMessageDialog(null,"Es un fantasma malo, asi que no puede salir del castillo",":( Que mal!",JOptionPane.INFORMATION_MESSAGE);
+                                    }
+                                }
+                            }
+                            else{
+                                continue;
+                            }    
+                        } 
+                    }
                 }
 
         }
