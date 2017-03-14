@@ -23,10 +23,15 @@ public class MainProyecto {
  */
         for (int i = 0; i < 100; i++) {
             usuarios[i] = new Usuario("","");
+            for(int m = 0 ; m < 10 ; m++){
+                usuarios[i].setReporte("", m);
+            }
         }
 /*****************************ESTO DEBO BORRARLO, SOLO ES PARA PROBAR EL TABLERO DEL JUEGO DE FORMA RAPIDA**************/
         usuarios[0].setNombUsuario("dafc");
         usuarios[0].setContra("dafc");
+        usuarios[1].setNombUsuario("julio");
+        usuarios[1].setContra("julio");
 /*****************************ACA TERMINA ESTAS LINEAS DE CODIGO DEBO BORRARLAS DESPUES DE PROBAR EL TABLERO**************/        
         contador = 0;//este es el contador que inicialize arriba, aca le asigno valor
         m.setVisible(true);//aca llamo para que sea visible el Menu de incio y aparezca.
@@ -35,9 +40,6 @@ public class MainProyecto {
     public static void crearUsuario(String nombUsuario, String contra) {
         usuarios[contador].setNombUsuario(nombUsuario);//aca se hace uso del metodo set para agregar un nombre de usuario en la posicion que tenga de numero la variable contador
         usuarios[contador].setContra(contra);//aca se hace lo mismo que la de arriba solo que para la contraseña
-        for(int i = 0 ; i < 10 ; i++){
-            usuarios[contador].setReporte("", i);
-        }
         contador++;// se aumenta la variable contador para que luego que se ingrese otro usuario sea almacenado en otra posicion distinta
     }
 //*******Este metodo sirve para comprobar si el nombre del usuario ya esta*************8

@@ -50,6 +50,11 @@ public class Menu_reportes extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 9, -1, -1));
 
         jb_jugadores.setText("Ultimos Juegos");
+        jb_jugadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_jugadoresActionPerformed(evt);
+            }
+        });
         getContentPane().add(jb_jugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 101, 130, 66));
 
         jb_ranking.setText("Ranking Jugadores");
@@ -111,6 +116,13 @@ public class Menu_reportes extends javax.swing.JFrame {
                 ta_pantalla.append("|    "+v+"           |   "+d+"              |"+em+"       |\n");
         }
     }//GEN-LAST:event_jb_rankingActionPerformed
+
+    private void jb_jugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_jugadoresActionPerformed
+        ta_pantalla.append("\tUltimos Juegos");
+        for (int i = 0; i < 10; i++) {
+            ta_pantalla.append("\n"+(i+1) + Menu_InicioSesion.UsuarioActivo.getReporte(i));
+        }
+    }//GEN-LAST:event_jb_jugadoresActionPerformed
 
     /**
      * @param args the command line arguments

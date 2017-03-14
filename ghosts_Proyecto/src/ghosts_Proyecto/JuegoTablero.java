@@ -203,7 +203,7 @@ public class JuegoTablero extends javax.swing.JFrame {
         
     }
     //este metodo servira para agregar un reporte al usuario que este activo y al rival con el que esta jugando
-    public boolean aggReporte(String report,String name1, String nam2){
+    public void aggReporte(String report,String name1, String nam2){
         int contador = 0;
         for(int i =0; i < 100;i++){
             if(MainProyecto.usuarios[i].getNombUsuario().equals(name1) && contador == 0){
@@ -231,8 +231,10 @@ public class JuegoTablero extends javax.swing.JFrame {
             else if(contador == 2){
                 break;
             }
+            else{
+                continue;
+            }
         }
-        return true;
     }
     public void comerPieza(int x, int y){
         int numComp = Tablero[posFila][posColum].getComponentCount();
@@ -285,7 +287,7 @@ public class JuegoTablero extends javax.swing.JFrame {
                 int x = Ghosts.posicionFila;
                 int y = Ghosts.posicionColumna;
             for(int i =0; i < Tablero.length; i ++){
-                // este if evalua que no se eleija una posicion fuera del area de juego, recordando que las columnas
+                // este if evalua que no se elija una posicion fuera del area de juego, recordando que las columnas
                     // de afuera son solo para las salidas del castillo.
                 if(Tablero[i][0].getMousePosition()!= null || Tablero[i][5].getMousePosition() != null){
                         JOptionPane.showMessageDialog(null,"No puede mover aca","Error",JOptionPane.ERROR_MESSAGE);
@@ -319,6 +321,7 @@ public class JuegoTablero extends javax.swing.JFrame {
     }
     public static String smsReporte = "";
     public boolean comprobarSalidaCastillo(){
+        
         if(Ghosts.paso == true){
                 this.pack();
                 int x = Ghosts.posicionFila;
@@ -345,11 +348,13 @@ public class JuegoTablero extends javax.swing.JFrame {
                                         String Gana = playerTurno%2 == 0?Player_2.usuarioActivo2.getNombUsuario():Menu_InicioSesion.UsuarioActivo.getNombUsuario();
                                         String Pierde = playerTurno%2 == 0?Menu_InicioSesion.UsuarioActivo.getNombUsuario():Player_2.usuarioActivo2.getNombUsuario();
                                         JOptionPane.showMessageDialog(null,Gana + " le ha ganado a "+Pierde +" porque ha sacado un fantasma bueno, por la esquina contraria" ,"Ganador",JOptionPane.INFORMATION_MESSAGE);
-                                     
+                                        smsReporte = Gana + " le ha ganado a "+Pierde +" porque ha sacado un fantasma bueno, por la esquina contraria";
+                                        aggReporte(smsReporte, Gana, Pierde);
                                         return true;
                                     }
                                     else{
                                         JOptionPane.showMessageDialog(null,"Es un fantasma malo, asi que no puede salir del castillo",":( Que mal!",JOptionPane.INFORMATION_MESSAGE);
+                                        return false;
                                     }
                                 }
                             }
@@ -368,6 +373,8 @@ public class JuegoTablero extends javax.swing.JFrame {
                                         String Gana = playerTurno%2 == 0?Player_2.usuarioActivo2.getNombUsuario():Menu_InicioSesion.UsuarioActivo.getNombUsuario();
                                         String Pierde = playerTurno%2 == 0?Menu_InicioSesion.UsuarioActivo.getNombUsuario():Player_2.usuarioActivo2.getNombUsuario();
                                         JOptionPane.showMessageDialog(null,Gana + " le ha ganado a "+Pierde +" porque ha sacado un fantasma bueno, por la esquina contraria" ,"Ganador",JOptionPane.INFORMATION_MESSAGE);
+                                        smsReporte = Gana + " le ha ganado a "+Pierde +" porque ha sacado un fantasma bueno, por la esquina contraria";
+                                        aggReporte(smsReporte, Gana, Pierde);
                                         return true;
                                     }
                                     else{
@@ -438,7 +445,7 @@ public class JuegoTablero extends javax.swing.JFrame {
             Ghosts.paso = false;//esta es la variable que declare en la clase ghost.
             playerTurno += 1;
             if(playerTurno % 2 == 0){
-                jLabel2.setText("Turno de  " + Player_2.usuarioActivo2);
+                jLabel2.setText("Turno de  " + Player_2.usuarioActivo2.getNombUsuario());
                 jLabel1.setIcon(new ImageIcon(getClass().getResource("/ghosts_Proyecto/res/ghostnegro.jpg")));
                 jlb_fantsBuenos.setText("Fantasmas Buenos de " + Player_2.usuarioActivo2.getNombUsuario() + " " + sumaGhosts[1][0]);
                 jlb_fantsMalos.setText("Fantasmas Malos de " + Player_2.usuarioActivo2.getNombUsuario() + " " + sumaGhosts[1][1]);
@@ -862,14 +869,14 @@ public class JuegoTablero extends javax.swing.JFrame {
     private void jBt_RetirarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBt_RetirarseActionPerformed
         String reporte= "";
         if(playerTurno % 2 == 0){
-            JOptionPane.showMessageDialog(null, Player_2.usuarioActivo2.getNombUsuario()+" se ha retirado","Retirado",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, Menu_InicioSesion.UsuarioActivo.getNombUsuario()+" Gano, porque " + Player_2.usuarioActivo2.getNombUsuario() +" se retiro","Retirado",JOptionPane.INFORMATION_MESSAGE);
             reporte = Menu_InicioSesion.UsuarioActivo.getNombUsuario()+" Gano, porque " + Player_2.usuarioActivo2.getNombUsuario() +" se retiro";
             aggReporte(reporte,Menu_InicioSesion.UsuarioActivo.getNombUsuario(), Player_2.usuarioActivo2.getNombUsuario());
             this.dispose();
             Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
         }
         else{
-            JOptionPane.showMessageDialog(null,Menu_InicioSesion.UsuarioActivo.getNombUsuario()+" se ha retirado","Retirado",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,Player_2.usuarioActivo2.getNombUsuario()+" Gano, porque " + Menu_InicioSesion.UsuarioActivo.getNombUsuario() +" se retiro","Retirado",JOptionPane.INFORMATION_MESSAGE);
             reporte = Player_2.usuarioActivo2.getNombUsuario()+" Gano, porque " + Menu_InicioSesion.UsuarioActivo.getNombUsuario() +" se retiro";
             aggReporte(reporte,Menu_InicioSesion.UsuarioActivo.getNombUsuario(), Player_2.usuarioActivo2.getNombUsuario());
             Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
