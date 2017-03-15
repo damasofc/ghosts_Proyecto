@@ -177,12 +177,14 @@ public class JuegoTablero extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,py1+ " ha ganado, porque "+py2+" le capturo todos sus fantasmas malos","Ganador",JOptionPane.INFORMATION_MESSAGE);
             reporte = py1+ " ha ganado, porque "+py2+" le capturo todos sus fantasmas malos";
             Menu_InicioSesion.UsuarioActivo.setPuntos(Menu_InicioSesion.UsuarioActivo.getPuntos() + 3);
+            playerTurno = 1;
             this.dispose();
             Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
         }
         else if(sumaGhosts[0][0] == 0 && sumaGhosts[0][1] != 0){
             JOptionPane.showMessageDialog(null,py2+ " ha ganado, porque capturo todos los fantasmas buenos de " +py1,"Ganador",JOptionPane.INFORMATION_MESSAGE);
             reporte = py2+ " ha ganado, porque capturo todos los fantasmas buenos de " +py1;
+            playerTurno = 1;
             this.dispose();
             Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
         }
@@ -190,12 +192,14 @@ public class JuegoTablero extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,py1+ " ha ganado, porque capturo todos los fantasmas buenos de " +py2,"Ganador",JOptionPane.INFORMATION_MESSAGE);
             reporte = py1+ " ha ganado, porque capturo todos los fantasmas buenos de " +py2;
             Menu_InicioSesion.UsuarioActivo.setPuntos(Menu_InicioSesion.UsuarioActivo.getPuntos() + 3);
+            playerTurno = 1;
             this.dispose();
             Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
         }
         else if(sumaGhosts[1][0] != 0 && sumaGhosts[1][1] == 0){
             JOptionPane.showMessageDialog(null,py2+ " ha ganado, porque "+py1+" le capturo todos sus fantasmas malos","Ganador",JOptionPane.INFORMATION_MESSAGE);
             reporte = py2+ " ha ganado, porque "+py1+" le capturo todos sus fantasmas malos";
+            playerTurno = 1;
             this.dispose();
             Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
         }
@@ -319,7 +323,7 @@ public class JuegoTablero extends javax.swing.JFrame {
             }
         return false;
     }
-    public static String smsReporte = "";
+    public String smsReporte = "";
     public boolean comprobarSalidaCastillo(){
         
         if(Ghosts.paso == true){
@@ -836,6 +840,7 @@ public class JuegoTablero extends javax.swing.JFrame {
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         if(comprobarSalidaCastillo() == true){
             this.dispose();
+            playerTurno = 1;
             Menu_InicioSesion.mp.setVisible(true);
         }
         else{
@@ -872,16 +877,15 @@ public class JuegoTablero extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, Menu_InicioSesion.UsuarioActivo.getNombUsuario()+" Gano, porque " + Player_2.usuarioActivo2.getNombUsuario() +" se retiro","Retirado",JOptionPane.INFORMATION_MESSAGE);
             reporte = Menu_InicioSesion.UsuarioActivo.getNombUsuario()+" Gano, porque " + Player_2.usuarioActivo2.getNombUsuario() +" se retiro";
             aggReporte(reporte,Menu_InicioSesion.UsuarioActivo.getNombUsuario(), Player_2.usuarioActivo2.getNombUsuario());
-            this.dispose();
-            Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
         }
         else{
             JOptionPane.showMessageDialog(null,Player_2.usuarioActivo2.getNombUsuario()+" Gano, porque " + Menu_InicioSesion.UsuarioActivo.getNombUsuario() +" se retiro","Retirado",JOptionPane.INFORMATION_MESSAGE);
             reporte = Player_2.usuarioActivo2.getNombUsuario()+" Gano, porque " + Menu_InicioSesion.UsuarioActivo.getNombUsuario() +" se retiro";
             aggReporte(reporte,Menu_InicioSesion.UsuarioActivo.getNombUsuario(), Player_2.usuarioActivo2.getNombUsuario());
-            Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
         }
+        playerTurno = 1;
         this.dispose();
+        Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
     }//GEN-LAST:event_jBt_RetirarseActionPerformed
 
 

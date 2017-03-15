@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 public class Menu_principal extends javax.swing.JFrame {
 /*esto que viene aca sera crear las variables para cada uno de los Jframes
     que se podran abrir al iniciar sesion y asi poder accederlos desde una sola clase*/
+        public static Player_2 p2;
         Mi_perfil mip=new Mi_perfil();
         Menu_configuracion mc=new Menu_configuracion();
         Como_jugar cmj= new Como_jugar();
@@ -130,7 +131,7 @@ public class Menu_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_juegaActionPerformed
 
     private void jb_JugarGhostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_JugarGhostActionPerformed
-        Player_2 p2=new Player_2();
+        p2 =new Player_2();
         p2.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jb_JugarGhostActionPerformed
