@@ -184,6 +184,7 @@ public class JuegoTablero extends javax.swing.JFrame {
         else if(sumaGhosts[0][0] == 0 && sumaGhosts[0][1] != 0){
             JOptionPane.showMessageDialog(null,py2+ " ha ganado, porque capturo todos los fantasmas buenos de " +py1,"Ganador",JOptionPane.INFORMATION_MESSAGE);
             reporte = py2+ " ha ganado, porque capturo todos los fantasmas buenos de " +py1;
+            Player_2.usuarioActivo2.setPuntos(Player_2.usuarioActivo2.getPuntos() + 3);
             playerTurno = 1;
             this.dispose();
             Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
@@ -199,6 +200,7 @@ public class JuegoTablero extends javax.swing.JFrame {
         else if(sumaGhosts[1][0] != 0 && sumaGhosts[1][1] == 0){
             JOptionPane.showMessageDialog(null,py2+ " ha ganado, porque "+py1+" le capturo todos sus fantasmas malos","Ganador",JOptionPane.INFORMATION_MESSAGE);
             reporte = py2+ " ha ganado, porque "+py1+" le capturo todos sus fantasmas malos";
+            Player_2.usuarioActivo2.setPuntos(Player_2.usuarioActivo2.getPuntos() + 3);
             playerTurno = 1;
             this.dispose();
             Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
@@ -323,9 +325,8 @@ public class JuegoTablero extends javax.swing.JFrame {
             }
         return false;
     }
-    public String smsReporte = "";
     public boolean comprobarSalidaCastillo(){
-        
+        String smsReporte = "";
         if(Ghosts.paso == true){
                 this.pack();
                 int x = Ghosts.posicionFila;
@@ -876,11 +877,13 @@ public class JuegoTablero extends javax.swing.JFrame {
         if(playerTurno % 2 == 0){
             JOptionPane.showMessageDialog(null, Menu_InicioSesion.UsuarioActivo.getNombUsuario()+" Gano, porque " + Player_2.usuarioActivo2.getNombUsuario() +" se retiro","Retirado",JOptionPane.INFORMATION_MESSAGE);
             reporte = Menu_InicioSesion.UsuarioActivo.getNombUsuario()+" Gano, porque " + Player_2.usuarioActivo2.getNombUsuario() +" se retiro";
+            Menu_InicioSesion.UsuarioActivo.setPuntos(Menu_InicioSesion.UsuarioActivo.getPuntos() + 3);
             aggReporte(reporte,Menu_InicioSesion.UsuarioActivo.getNombUsuario(), Player_2.usuarioActivo2.getNombUsuario());
         }
         else{
             JOptionPane.showMessageDialog(null,Player_2.usuarioActivo2.getNombUsuario()+" Gano, porque " + Menu_InicioSesion.UsuarioActivo.getNombUsuario() +" se retiro","Retirado",JOptionPane.INFORMATION_MESSAGE);
             reporte = Player_2.usuarioActivo2.getNombUsuario()+" Gano, porque " + Menu_InicioSesion.UsuarioActivo.getNombUsuario() +" se retiro";
+            Player_2.usuarioActivo2.setPuntos(Player_2.usuarioActivo2.getPuntos() + 3);
             aggReporte(reporte,Menu_InicioSesion.UsuarioActivo.getNombUsuario(), Player_2.usuarioActivo2.getNombUsuario());
         }
         playerTurno = 1;
