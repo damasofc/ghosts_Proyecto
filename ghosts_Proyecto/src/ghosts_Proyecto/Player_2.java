@@ -113,8 +113,10 @@ public class Player_2 extends javax.swing.JFrame {
             nm = new JuegoTablero();
             this.dispose();
             nm.setVisible(true);
-            JOptionPane.showMessageDialog(null,"Los fantasmas de "+Menu_InicioSesion.UsuarioActivo.getNombUsuario()
-                    + " son los blancos \ny los de "+Player_2.usuarioActivo2.getNombUsuario()+ " son los negros","Informacion",JOptionPane.INFORMATION_MESSAGE);
+            if(JuegoTablero.modoJuego == "Aleatorio"){
+                JOptionPane.showMessageDialog(null,"Los fantasmas de "+Menu_InicioSesion.UsuarioActivo.getNombUsuario()
+                        + " son los blancos \ny los de "+Player_2.usuarioActivo2.getNombUsuario()+ " son los negros","Informacion",JOptionPane.INFORMATION_MESSAGE);
+            }
         } 
         else{
             JOptionPane.showMessageDialog(null,"Ingrese un nombre de usuario valido","Error",JOptionPane.INFORMATION_MESSAGE);//hace que se vea la ventanita diciendo que se creo el nuevo usuario

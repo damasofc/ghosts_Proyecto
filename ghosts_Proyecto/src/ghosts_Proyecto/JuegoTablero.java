@@ -96,12 +96,38 @@ public class JuegoTablero extends javax.swing.JFrame {
         contadorMalos = 0;
         contadorbuenos = 0;
     }
+    //2 variables que almacenan la posicion donde se colocara el fantasma
+    int filColocar;
+    int columColocar;
+/*
+    Metodo para comprobar que no haya otro fantasma en la posicion en que se desea colocar el fantasma, y que ademas, no seleccione
+    una posicion en la cual no pueda colocar su fantasmas
+    */
+    public boolean comprobarCargFantas(int Player){
+        filColocar = -1;
+        columColocar = -1;
+        JPanel[][] x = Player == 0?cuadrosPlayer1:cuadrosPlayer2;
+        for(int i =0; i < x.length; i ++){
+                for(int m = 0; m < x[i].length; m++){
+                    if(x[i][m].getMousePosition() != null){
+                        filColocar = i;
+                        columColocar = m;       
+                        return true;
+                    }
+                    else{
+                        continue;
+                    }
+                } 
+        }
+        
+        return false;
+    }
+    public boolean cargoFantasmas = false;
 //****este metodo coloca todos los fantasmas en el tablero    
     public void cargarFantasmas(int player){
         JPanel[][] x = player == 0?cuadrosPlayer1:cuadrosPlayer2;
         int r = 0;
         int y = cantGhosts/2;
-        if(modoJuego == "Aleatorio"){
             for(int i = 0; i < x.length; i++){
                 if(cantGhosts < 5){
                     y = cantGhosts;
@@ -120,26 +146,30 @@ public class JuegoTablero extends javax.swing.JFrame {
                     r++;
                 }
             }
-        }
-        else{
-            
-        }
     }
     public JuegoTablero() {
         initComponents();
         almacenarPaneles();
         guardarFantasmas(0);
         guardarFantasmas(1);
-        cargarFantasmas(0);
-        cargarFantasmas(1);
+        if(modoJuego == "Aleatorio"){
+            cargarFantasmas(0);
+            cargarFantasmas(1);
+            jBt_colocar.setVisible(false);
+            cargoFantasmas = true;
+            jLabel2.setText("Turno de " + Menu_InicioSesion.UsuarioActivo.getNombUsuario());
+            jLabel1.setIcon(new ImageIcon(getClass().getResource("/ghosts_Proyecto/res/ghost.png")));
+            jlb_fantsBuenos.setText("Fantasmas Buenos de " + Menu_InicioSesion.UsuarioActivo.getNombUsuario() + " " + sumaGhosts[0][0]);
+            jlb_fantsMalos.setText("Fantasmas Malos de " + Menu_InicioSesion.UsuarioActivo.getNombUsuario() + " " + sumaGhosts[0][1]);
+        }
+        else{
+            jBt_colocar.setVisible(true);
+            this.setVisible(true);
+        }
         sumaGhosts[0][0] = cantGhosts/2;//suma de fantasmas buenos del player 1
         sumaGhosts[0][1] = cantGhosts/2;//suma de fantasmas malos del player 1
         sumaGhosts[1][0] = cantGhosts/2;//suma de fantasmas buenos del player 2
         sumaGhosts[1][1] = cantGhosts/2;//suma de fantasmas malos del player 1
-        jLabel2.setText("Turno de " + Menu_InicioSesion.UsuarioActivo.getNombUsuario());
-        jLabel1.setIcon(new ImageIcon(getClass().getResource("/ghosts_Proyecto/res/ghost.png")));
-        jlb_fantsBuenos.setText("Fantasmas Buenos de " + Menu_InicioSesion.UsuarioActivo.getNombUsuario() + " " + sumaGhosts[0][0]);
-        jlb_fantsMalos.setText("Fantasmas Malos de " + Menu_InicioSesion.UsuarioActivo.getNombUsuario() + " " + sumaGhosts[0][1]);
         this.pack();
         
         
@@ -528,6 +558,7 @@ public class JuegoTablero extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jlb_fantsBuenos = new javax.swing.JLabel();
         jlb_fantsMalos = new javax.swing.JLabel();
+        jBt_colocar = new javax.swing.JButton();
         jBt_Retirarse = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
@@ -813,14 +844,18 @@ public class JuegoTablero extends javax.swing.JFrame {
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
         jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
-
-        jlb_fantsBuenos.setText("jLabel3");
         jPanel6.add(jlb_fantsBuenos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
-
-        jlb_fantsMalos.setText("jLabel4");
         jPanel6.add(jlb_fantsMalos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
         getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 40, 260, 280));
+
+        jBt_colocar.setText("Colocar Fantasmas");
+        jBt_colocar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBt_colocarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBt_colocar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 360, 170, 40));
 
         jBt_Retirarse.setText("Retirarse");
         jBt_Retirarse.addActionListener(new java.awt.event.ActionListener() {
@@ -832,33 +867,75 @@ public class JuegoTablero extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ghosts_Proyecto/res/fondo-de-madera-2831.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 610));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 610));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        if(comprobarSalidaCastillo() == true){
-            this.dispose();
-            playerTurno = 1;
-            Menu_InicioSesion.mp.setVisible(true);
-        }
-        else{
-            if(comprobarEC() == true ){
-                if(comprobarSHF() == false){
-                    moverPieza(posFila,posColum);
-                }
-                else{
-                    if(comprobarSHF_rival() == true){
-                        comerPieza(filFanCom,colFanCom);
-                        moverPieza(posFila, posColum);
-                        determinarSHGanador();
-
+        if(cargoFantasmas == true){
+            if(comprobarSalidaCastillo() == true){
+                this.dispose();
+                playerTurno = 1;
+                Menu_InicioSesion.mp.setVisible(true);
+            }
+            else{
+                if(comprobarEC() == true ){
+                    if(comprobarSHF() == false){
+                        moverPieza(posFila,posColum);
                     }
                     else{
-                        JOptionPane.showMessageDialog(null,"Donde desea mover, ya esta ocupado ","Error.",JOptionPane.ERROR_MESSAGE);
+                        if(comprobarSHF_rival() == true){
+                            comerPieza(filFanCom,colFanCom);
+                            moverPieza(posFila, posColum);
+                            determinarSHGanador();
+
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null,"Donde desea mover, ya esta ocupado ","Error.",JOptionPane.ERROR_MESSAGE);
+                        }
                     }
+                }
+            }
+        }
+        else if(pasoColoc == true){
+            if(contUsu == 0){
+                if(comprobarCargFantas(contUsu) == true && comprobarSHF() == false){
+                    Tablero[filColocar][columColocar + 1].add(ghosts[0][contColocar-1]);
+                    this.pack();
+                    Ghosts.paso = false;
+                    pasoColoc = false;
+                    if(contColocar >= cantGhosts){
+                    contColocar = 0;
+                    contUsu = 1;
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Porfavor eliga otra posicion, esta esta ocupada o es incorrecta","Error",JOptionPane.ERROR_MESSAGE);
+
+                }
+            }
+            else{
+                if(comprobarCargFantas(contUsu) == true && comprobarSHF() == false){
+                    Tablero[5-filColocar][columColocar + 1].add(ghosts[1][contColocar-1]);
+                    this.pack();
+                    Ghosts.paso = false;
+                    pasoColoc = false;
+                    if(contColocar >= cantGhosts){
+                        jBt_colocar.setVisible(false);
+                        cargoFantasmas = true;
+                        jLabel2.setText("Turno de " + Menu_InicioSesion.UsuarioActivo.getNombUsuario());
+                        jLabel1.setIcon(new ImageIcon(getClass().getResource("/ghosts_Proyecto/res/ghost.png")));
+                        jlb_fantsBuenos.setText("Fantasmas Buenos de " + Menu_InicioSesion.UsuarioActivo.getNombUsuario() + " " + sumaGhosts[0][0]);
+                        jlb_fantsMalos.setText("Fantasmas Malos de " + Menu_InicioSesion.UsuarioActivo.getNombUsuario() + " " + sumaGhosts[0][1]);
+                        JOptionPane.showMessageDialog(null,"Los fantasmas de "+Menu_InicioSesion.UsuarioActivo.getNombUsuario()
+                        + " son los blancos \ny los de "+Player_2.usuarioActivo2.getNombUsuario()+ " son los negros","Informacion",JOptionPane.INFORMATION_MESSAGE);
+                        this.pack();
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Porfavor eliga otra posicion, esta esta ocupada o es incorrecta","Error",JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
@@ -890,6 +967,37 @@ public class JuegoTablero extends javax.swing.JFrame {
         this.dispose();
         Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
     }//GEN-LAST:event_jBt_RetirarseActionPerformed
+//esta variable pasoColoc, es la que definira si se hace algo al dar click en una posicion o no
+    boolean pasoColoc = false;
+//este es un contador para ir colocando cada uno de los fantasmitas
+    int contColocar = 0;
+    //este contador determinara de cual usuario se estan agregando fantasmas
+    int contUsu = 0;
+    private void jBt_colocarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBt_colocarActionPerformed
+        if(contUsu == 0 && contColocar <= cantGhosts){
+            if(contColocar == 0){
+                JOptionPane.showMessageDialog(null,Menu_InicioSesion.UsuarioActivo.getNombUsuario()+" Porfavor agregue los fantasmas en la posicion que usted quiera","Colocar",JOptionPane.INFORMATION_MESSAGE);
+            }    
+            Ghosts gh = (Ghosts) ghosts[contUsu][contColocar];
+            String tipofant = gh.getTipFantas();
+            JOptionPane.showMessageDialog(null,"Este es un fantasma "+ tipofant +" porfavor haga click donde desea colocarlo, solo en las primeras 2 filas","Colocar",JOptionPane.INFORMATION_MESSAGE);
+            contColocar += 1;
+            Ghosts.paso = true;
+            pasoColoc = true;
+        }
+        
+        else if(contUsu == 1 && contColocar <= cantGhosts){
+            if(contColocar == 0){
+                JOptionPane.showMessageDialog(null,Player_2.usuarioActivo2.getNombUsuario()+" Porfavor agregue los fantasmas en la posicion que usted quiera","Colocar",JOptionPane.INFORMATION_MESSAGE);
+            } 
+            Ghosts gh = (Ghosts) ghosts[contUsu][contColocar];
+            String tipofant = gh.getTipFantas();
+            JOptionPane.showMessageDialog(null,"Este es un fantasma "+ tipofant +" porfavor haga click donde desea colocarlo, solo en las primeras 2 filas","Colocar",JOptionPane.INFORMATION_MESSAGE);
+            contColocar += 1;
+            Ghosts.paso = true;
+            pasoColoc = true;
+        }
+    }//GEN-LAST:event_jBt_colocarActionPerformed
 
 
     public static void main(String args[]) {;
@@ -905,6 +1013,7 @@ public class JuegoTablero extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBt_Retirarse;
+    private javax.swing.JButton jBt_colocar;
     private javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
