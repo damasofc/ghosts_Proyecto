@@ -105,6 +105,9 @@ public class cambio_p extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_regActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_regActionPerformed
+Mi_perfil mp =new Mi_perfil();
+mp.setVisible(true);
+
         
         
         this.dispose();
