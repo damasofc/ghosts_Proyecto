@@ -36,7 +36,7 @@ public class JuegoTablero extends javax.swing.JFrame {
     public static String lastGhost = " ";
 //esta variable es la que hara que si es Aleatorio, pues pondra los fantasmitas de manera aletoria, pero
 // si es Normal, entonces los fantasmitas los colocara cada uno de los players, donde ellos quieran
-    public static String modoJuego = "Aleatori";
+    public static String modoJuego = "Aleatorio";
     
 
     public void almacenarPaneles(){
@@ -385,6 +385,12 @@ public class JuegoTablero extends javax.swing.JFrame {
                                         JOptionPane.showMessageDialog(null,Gana + " le ha ganado a "+Pierde +" porque ha sacado un fantasma bueno, por la esquina contraria" ,"Ganador",JOptionPane.INFORMATION_MESSAGE);
                                         smsReporte = Gana + " le ha ganado a "+Pierde +" porque ha sacado un fantasma bueno, por la esquina contraria";
                                         aggReporte(smsReporte, Gana, Pierde);
+                                        if(Gana == Player_2.usuarioActivo2.getNombUsuario()){
+                                            Player_2.usuarioActivo2.setPuntos(Player_2.usuarioActivo2.getPuntos() + 3);
+                                        }
+                                        else{
+                                            Menu_InicioSesion.UsuarioActivo.setPuntos(Menu_InicioSesion.UsuarioActivo.getPuntos() + 3);
+                                        }
                                         return true;
                                     }
                                     else{
@@ -410,6 +416,12 @@ public class JuegoTablero extends javax.swing.JFrame {
                                         JOptionPane.showMessageDialog(null,Gana + " le ha ganado a "+Pierde +" porque ha sacado un fantasma bueno, por la esquina contraria" ,"Ganador",JOptionPane.INFORMATION_MESSAGE);
                                         smsReporte = Gana + " le ha ganado a "+Pierde +" porque ha sacado un fantasma bueno, por la esquina contraria";
                                         aggReporte(smsReporte, Gana, Pierde);
+                                        if(Gana == Player_2.usuarioActivo2.getNombUsuario()){
+                                            Player_2.usuarioActivo2.setPuntos(Player_2.usuarioActivo2.getPuntos() + 3);
+                                        }
+                                        else{
+                                            Menu_InicioSesion.UsuarioActivo.setPuntos(Menu_InicioSesion.UsuarioActivo.getPuntos() + 3);
+                                        }
                                         return true;
                                     }
                                     else{

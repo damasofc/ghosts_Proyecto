@@ -26,13 +26,7 @@ public class MainProyecto {
             for(int m = 0 ; m < 10 ; m++){
                 usuarios[i].setReporte("", m);
             }
-        }
-/*****************************ESTO DEBO BORRARLO, SOLO ES PARA PROBAR EL TABLERO DEL JUEGO DE FORMA RAPIDA**************/
-        usuarios[0].setNombUsuario("dafc");
-        usuarios[0].setContra("dafc");
-        usuarios[1].setNombUsuario("julio");
-        usuarios[1].setContra("julio");
-/*****************************ACA TERMINA ESTAS LINEAS DE CODIGO DEBO BORRARLAS DESPUES DE PROBAR EL TABLERO**************/        
+        }       
         contador = 0;//este es el contador que inicialize arriba, aca le asigno valor
         m.setVisible(true);//aca llamo para que sea visible el Menu de incio y aparezca.
     }
