@@ -93,34 +93,60 @@ public class Menu_reportes extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_regresarActionPerformed
 
     private void jb_rankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_rankingActionPerformed
-       
-        for (int i = 1; i <= 2; i++) {
-            int v=0,d=0,em=0;
-            
-                
-            int random2 = randomio(3);
-                if (random2 == 1){
-                v=10;        
-                    
+        ta_pantalla.setText("");//con esto se borra lo que esta escrito en el textArea (si es que hay algo escrito)
+        ta_pantalla.append("\tRanking de jugadores\nUsuario\t\t\tPuntos\n");
+        
+        int puntosJugadores[] = new int[MainProyecto.usuarios.length];
+        String jugadores[] = new String[MainProyecto.usuarios.length];
+        //cree este arreglo para introducir los puntos de cada jugador aqui
+        //tal vez de esta manera se me haga mas facil manipular las posiciones
+        int a = 1;
+        int auxPuntos; //con esta manipulo el cambio de posicion de los valores del arreglo 
+        String auxUsuario;
+        //en este ciclo envio los nombres de usario y los puntos a los arreglos que cree aqui
+        for (int i = 0; i < MainProyecto.usuarios.length; i++) {
+            if("".equals(MainProyecto.usuarios[i].getNombUsuario())){
+                break;
+            }
+            jugadores[i] = MainProyecto.usuarios[i].getNombUsuario();
+            puntosJugadores[i] = MainProyecto.usuarios[i].getPuntos();
+        }
+        //con estos dos ciclos cambie de posicion los valores del arreglo de mayor a menor
+        for (int i = 0; i < MainProyecto.usuarios.length; i++) {
+            if("".equals(MainProyecto.usuarios[i].getNombUsuario())){
+                break;
+            }
+            for(int j = i + 1; j < MainProyecto.usuarios.length; j++){
+                if(puntosJugadores[i] < puntosJugadores[j]){
+                    auxPuntos = puntosJugadores[i];
+                    auxUsuario = jugadores[i];
+                    puntosJugadores[i] = puntosJugadores[j];
+                    jugadores[i] = jugadores [j];
+                    puntosJugadores[j] = auxPuntos;
+                    jugadores[j] = auxUsuario;
                 }
-                else if (random2 == 2){
-                d=23;  
-                }
-                else if (random2 == 3){
-                em=4;
-                }
-                ta_pantalla.append("   ***Ranking***   \n");
-                
-                ta_pantalla.append("   El jugador "+i+ " lleva   \n");
-                ta_pantalla.append("|Victorias   |Derrotas   |Empates |\n");
-                ta_pantalla.append("|    "+v+"           |   "+d+"              |"+em+"       |\n");
+            }
+        }
+        //impresion de arreglos ordenados (usuarios y puntuacion)
+        for (int i = 0; i < MainProyecto.usuarios.length; i++) {
+            if("".equals(MainProyecto.usuarios[i].getNombUsuario())){
+                break;
+            }
+            ta_pantalla.append(Integer.toString(a)+". "+jugadores[i]+":\t\t\t"+Integer.toString(puntosJugadores[i])+"\n");
+            a++;
         }
     }//GEN-LAST:event_jb_rankingActionPerformed
 
     private void jb_jugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_jugadoresActionPerformed
+        int a = 1;
+        ta_pantalla.setText("");
         ta_pantalla.append("\tUltimos Juegos");
-        for (int i = 0; i < 10; i++) {
-            ta_pantalla.append("\n"+(i+1) + Menu_InicioSesion.UsuarioActivo.getReporte(i));
+        for (int i = 9; i >= 0; i--) {
+            if("".equals(Menu_InicioSesion.UsuarioActivo.getReporte(i))){
+                continue;
+            }
+            ta_pantalla.append("\n"+a+". "+Menu_InicioSesion.UsuarioActivo.getReporte(i));
+            a++;
         }
     }//GEN-LAST:event_jb_jugadoresActionPerformed
 

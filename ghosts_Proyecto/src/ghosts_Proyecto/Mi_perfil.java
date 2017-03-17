@@ -95,23 +95,31 @@ public class Mi_perfil extends javax.swing.JFrame {
         cambio_p ns = new cambio_p();
         ns.setVisible(true);
         ns.setLocationRelativeTo(null);
+        ta_Pantalla.setText(null);//borra el contenido anterior
         this.dispose();
     }//GEN-LAST:event_jb_passwordActionPerformed
 
     private void jb_miperfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_miperfilActionPerformed
         ta_Pantalla.append("Nombre de Usuario: \n"+Menu_InicioSesion.UsuarioActivo.getNombUsuario() + "\n");
-       
-        ta_Pantalla.append("Contraseña: \n"+Menu_InicioSesion.UsuarioActivo.getContra());
+        
+        ta_Pantalla.append("Contraseña: \n"+Menu_InicioSesion.UsuarioActivo.getContra()+"\n");
+        
+        ta_Pantalla.append("Los puntos de "+Menu_InicioSesion.UsuarioActivo.getNombUsuario()+" son"+": \n"+Menu_InicioSesion.UsuarioActivo.getPuntos()+ "\n");
+        
     }//GEN-LAST:event_jb_miperfilActionPerformed
 
     private void jb_regActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_regActionPerformed
        Menu_principal mp=new Menu_principal();
         mp.setVisible(true);
+        ta_Pantalla.setText(null);//borra el contenido anterior
         this.dispose();
     }//GEN-LAST:event_jb_regActionPerformed
 
     private void jb_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_eliminarActionPerformed
-        // TODO add your handling code here:
+        Eliminar_Usuario eu=new Eliminar_Usuario();
+        eu.setVisible(true);
+        ta_Pantalla.setText(null);//borra el contenido anterior
+        this.dispose();
     }//GEN-LAST:event_jb_eliminarActionPerformed
 
     /**
