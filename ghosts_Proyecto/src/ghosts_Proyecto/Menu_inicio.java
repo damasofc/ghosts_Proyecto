@@ -84,7 +84,6 @@ public class Menu_inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_salirActionPerformed
 
     private void bt_iniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_iniciarSesionActionPerformed
-
         MainProyecto.mis.setVisible(true);//esto hace que al dar click en el boton iniciar sesion, se abra la ventana inicio_sesion
         this.dispose();
     }//GEN-LAST:event_bt_iniciarSesionActionPerformed

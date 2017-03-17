@@ -159,6 +159,7 @@ public class JuegoTablero extends javax.swing.JFrame {
         if(modoJuego == "Aleatorio"){
             cargarFantasmas(0);
             cargarFantasmas(1);
+            jBt_regresar.setVisible(false);
             jBt_colocar.setVisible(false);
             cargoFantasmas = true;
             jLabel2.setText("Turno de " + Menu_InicioSesion.UsuarioActivo.getNombUsuario());
@@ -167,7 +168,9 @@ public class JuegoTablero extends javax.swing.JFrame {
             jlb_fantsMalos.setText("Fantasmas Malos de " + Menu_InicioSesion.UsuarioActivo.getNombUsuario() + " " + sumaGhosts[0][1]);
         }
         else{
+            jBt_regresar.setVisible(true);
             jBt_colocar.setVisible(true);
+            jBt_Retirarse.setVisible(false);
             this.setVisible(true);
         }
         this.pack();
@@ -570,11 +573,12 @@ public class JuegoTablero extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jlb_fantsBuenos = new javax.swing.JLabel();
         jlb_fantsMalos = new javax.swing.JLabel();
+        jBt_regresar = new javax.swing.JButton();
         jBt_colocar = new javax.swing.JButton();
         jBt_Retirarse = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(916, 630));
         setResizable(false);
         setSize(new java.awt.Dimension(840, 750));
@@ -866,6 +870,14 @@ public class JuegoTablero extends javax.swing.JFrame {
 
         getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 40, 260, 280));
 
+        jBt_regresar.setText("Regresar");
+        jBt_regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBt_regresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBt_regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 560, -1, -1));
+
         jBt_colocar.setText("Colocar Fantasmas");
         jBt_colocar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -949,6 +961,8 @@ public class JuegoTablero extends javax.swing.JFrame {
                     if(contColocar >= cantGhosts){
                         jBt_colocar.setVisible(false);
                         cargoFantasmas = true;
+                        jBt_Retirarse.setVisible(true);
+                        jBt_regresar.setVisible(false);
                         jLabel2.setText("Turno de " + Menu_InicioSesion.UsuarioActivo.getNombUsuario());
                         jLabel1.setIcon(new ImageIcon(getClass().getResource("/ghosts_Proyecto/res/ghost.png")));
                         jlb_fantsBuenos.setText("Fantasmas Buenos de " + Menu_InicioSesion.UsuarioActivo.getNombUsuario() + " " + sumaGhosts[0][0]);
@@ -1032,6 +1046,11 @@ public class JuegoTablero extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowClosed
 
+    private void jBt_regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBt_regresarActionPerformed
+        this.dispose();
+        Menu_InicioSesion.mp.setVisible(true);
+    }//GEN-LAST:event_jBt_regresarActionPerformed
+
 
     public static void main(String args[]) {;
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1047,6 +1066,7 @@ public class JuegoTablero extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBt_Retirarse;
     private javax.swing.JButton jBt_colocar;
+    private javax.swing.JButton jBt_regresar;
     private javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

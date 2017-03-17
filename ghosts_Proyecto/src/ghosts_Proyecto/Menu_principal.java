@@ -35,7 +35,7 @@ public class Menu_principal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -59,7 +59,7 @@ public class Menu_principal extends javax.swing.JFrame {
                 jb_ConfiguracionActionPerformed(evt);
             }
         });
-        getContentPane().add(jb_Configuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 120, -1));
+        getContentPane().add(jb_Configuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, -1, -1));
 
         jb_Reportes.setText("Reportes");
         jb_Reportes.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +91,7 @@ public class Menu_principal extends javax.swing.JFrame {
                 jb_juegaActionPerformed(evt);
             }
         });
-        getContentPane().add(jb_juega, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 120, -1));
+        getContentPane().add(jb_juega, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));

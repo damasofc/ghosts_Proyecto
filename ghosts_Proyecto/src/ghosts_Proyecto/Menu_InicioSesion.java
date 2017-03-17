@@ -30,7 +30,7 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
         but_regresar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -111,6 +111,8 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
 
     private void but_regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but_regresarActionPerformed
         MainProyecto.m.setVisible(true);
+        jtf_usuario.setText("");
+        psw_contra.setText("");
         this.dispose();
     }//GEN-LAST:event_but_regresarActionPerformed
 
