@@ -26,6 +26,7 @@ public class MenuCrearUsuario  extends javax.swing.JFrame{
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -68,14 +69,19 @@ public class MenuCrearUsuario  extends javax.swing.JFrame{
 
     
     private void bt_crearJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_crearJugadorActionPerformed
-        boolean comprobar = MainProyecto.comprobarUsuario(jtf_usuario.getText());//aca se llama al metodo comprobarUsuario y se almacena en la variable comprobar
-        if(comprobar == true){//aca ya se evalua si el usuario esta o no esta.
-            JOptionPane.showMessageDialog(null,"Jugador ya existente","Error",JOptionPane.ERROR_MESSAGE);
+        if(jtf_usuario.getText().equals("") || psw_contra.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Porfavor Complete los campos vacios","Error",JOptionPane.ERROR_MESSAGE);
         }
-        else if(comprobar == false){//aca se evalua si el usuario no esta entonces se hacen las siguientes instrucciones.
-                MainProyecto.crearUsuario(jtf_usuario.getText(), psw_contra.getText());//se llama al metodo y se crea el usuario.
-                JOptionPane.showMessageDialog(null,"Usuario creado","Excelente",JOptionPane.INFORMATION_MESSAGE);//hace que se vea la ventanita diciendo que se creo el nuevo usuario
-       }
+        else{
+            boolean comprobar = MainProyecto.comprobarUsuario(jtf_usuario.getText());//aca se llama al metodo comprobarUsuario y se almacena en la variable comprobar
+            if(comprobar == true){//aca ya se evalua si el usuario esta o no esta.
+                JOptionPane.showMessageDialog(null,"Jugador ya existente","Error",JOptionPane.ERROR_MESSAGE);
+            }
+            else if(comprobar == false){//aca se evalua si el usuario no esta entonces se hacen las siguientes instrucciones.
+                    MainProyecto.crearUsuario(jtf_usuario.getText(), psw_contra.getText());//se llama al metodo y se crea el usuario.
+                    JOptionPane.showMessageDialog(null,"Usuario creado","Excelente",JOptionPane.INFORMATION_MESSAGE);//hace que se vea la ventanita diciendo que se creo el nuevo usuario
+           }
+        }    
         //******estos 2 de aca abajo hacen que luego de ingresar los datos y luego que haya ingresado el nuevo usuario entonces borre lo escrito en los textfiel
        jtf_usuario.setText("");
        psw_contra.setText("");

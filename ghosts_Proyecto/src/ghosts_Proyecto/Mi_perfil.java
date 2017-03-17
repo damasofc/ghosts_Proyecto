@@ -38,6 +38,7 @@ public class Mi_perfil extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -50,7 +51,7 @@ public class Mi_perfil extends javax.swing.JFrame {
         ta_Pantalla.setRows(5);
         jScrollPane1.setViewportView(ta_Pantalla);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 81, 360, 184));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 330, 184));
 
         jb_miperfil.setText("Ver perfil");
         jb_miperfil.addActionListener(new java.awt.event.ActionListener() {
@@ -58,7 +59,7 @@ public class Mi_perfil extends javax.swing.JFrame {
                 jb_miperfilActionPerformed(evt);
             }
         });
-        getContentPane().add(jb_miperfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 103, 150, -1));
+        getContentPane().add(jb_miperfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 150, -1));
 
         jb_password.setText("Cambiar Contraseña");
         jb_password.addActionListener(new java.awt.event.ActionListener() {
@@ -66,7 +67,7 @@ public class Mi_perfil extends javax.swing.JFrame {
                 jb_passwordActionPerformed(evt);
             }
         });
-        getContentPane().add(jb_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 137, 150, -1));
+        getContentPane().add(jb_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 180, -1));
 
         jb_eliminar.setText("Eliminar cuenta");
         jb_eliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +75,7 @@ public class Mi_perfil extends javax.swing.JFrame {
                 jb_eliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(jb_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 171, 150, -1));
+        getContentPane().add(jb_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 150, -1));
 
         jb_reg.setText("Regresar");
         jb_reg.addActionListener(new java.awt.event.ActionListener() {
@@ -82,11 +83,11 @@ public class Mi_perfil extends javax.swing.JFrame {
                 jb_regActionPerformed(evt);
             }
         });
-        getContentPane().add(jb_reg, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 205, 150, -1));
+        getContentPane().add(jb_reg, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 150, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ghosts_Proyecto/res/MG_9730-copia.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 290));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -37,6 +37,7 @@ public class Player_2 extends javax.swing.JFrame {
         bt_2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Nombre Jugador 2");
@@ -102,35 +103,40 @@ public class Player_2 extends javax.swing.JFrame {
 
 
     private void jb_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_aceptarActionPerformed
-         boolean comprobar = MainProyecto.comprobarUsuario(tf_nom2.getText());//aca se llama al metodo comprobarUsuario y se almacena en la variable comprobar
-        if(comprobar == true){//aca ya se evalua si el usuario esta o no esta.
-            for (int x = 0; x < 100; x++) {
-                String a = MainProyecto.usuarios[x].getNombUsuario();
-                if (a.equals(tf_nom2.getText())) {
-                    if(a.equals(Menu_InicioSesion.UsuarioActivo.getNombUsuario())){
-                        JOptionPane.showMessageDialog(null,"Ha ingresado el mismo usuario que ya inicio sesion\nPorfavor escriba otro usuario","Error",JOptionPane.ERROR_MESSAGE);
-                        break;
-                    }
-                    else{
-                        usuarioActivo2 = MainProyecto.usuarios[x];
-                        nm = new JuegoTablero();
-                        this.dispose();
-                        nm.setVisible(true);
-                        if(JuegoTablero.modoJuego == "Aleatorio"){
-                            JOptionPane.showMessageDialog(null,"Los fantasmas de "+Menu_InicioSesion.UsuarioActivo.getNombUsuario()
-                                    + " son los blancos \ny los de "+Player_2.usuarioActivo2.getNombUsuario()+ " son los negros","Informacion",JOptionPane.INFORMATION_MESSAGE);
+        if(tf_nom2.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Usuario invalido\nPorfavor ingrese un usuario correcto","Error",JOptionPane.ERROR_MESSAGE);
+            tf_nom2.setText("");
+        }
+        else{
+            boolean comprobar = MainProyecto.comprobarUsuario(tf_nom2.getText());//aca se llama al metodo comprobarUsuario y se almacena en la variable comprobar
+            if(comprobar == true){//aca ya se evalua si el usuario esta o no esta.
+                for (int x = 0; x < 100; x++) {
+                    String a = MainProyecto.usuarios[x].getNombUsuario();
+                    if (a.equals(tf_nom2.getText())) {
+                        if(a.equals(Menu_InicioSesion.UsuarioActivo.getNombUsuario())){
+                            JOptionPane.showMessageDialog(null,"Ha ingresado el mismo usuario que ya inicio sesion\nPorfavor escriba otro usuario","Error",JOptionPane.ERROR_MESSAGE);
+                            break;
                         }
                         else{
-                            JOptionPane.showMessageDialog(null,"Porfavor haga click en el boton Colocar fantasmas y siga las instrucciones","Modo de juego: Normal",JOptionPane.INFORMATION_MESSAGE);
+                            usuarioActivo2 = MainProyecto.usuarios[x];
+                            nm = new JuegoTablero();
+                            this.dispose();
+                            nm.setVisible(true);
+                            if(JuegoTablero.modoJuego == "Aleatorio"){
+                                JOptionPane.showMessageDialog(null,"Los fantasmas de "+Menu_InicioSesion.UsuarioActivo.getNombUsuario()
+                                        + " son los blancos \ny los de "+Player_2.usuarioActivo2.getNombUsuario()+ " son los negros","Informacion",JOptionPane.INFORMATION_MESSAGE);
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(null,"Porfavor haga click en el boton Colocar fantasmas y siga las instrucciones","Modo de juego: Normal",JOptionPane.INFORMATION_MESSAGE);
+                            }
                         }
                     }
                 }
+            } 
+            else{
+                JOptionPane.showMessageDialog(null,"Ingrese un nombre de usuario valido","Error",JOptionPane.INFORMATION_MESSAGE);//hace que se vea la ventanita diciendo que se creo el nuevo usuario
             }
-        } 
-        else{
-            JOptionPane.showMessageDialog(null,"Ingrese un nombre de usuario valido","Error",JOptionPane.INFORMATION_MESSAGE);//hace que se vea la ventanita diciendo que se creo el nuevo usuario
         }
-        
     }//GEN-LAST:event_jb_aceptarActionPerformed
 
     private void bt_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_2ActionPerformed

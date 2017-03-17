@@ -42,12 +42,13 @@ public class Menu_reportes extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Reportes");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 9, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
 
         jb_jugadores.setText("Ultimos Juegos");
         jb_jugadores.addActionListener(new java.awt.event.ActionListener() {
@@ -55,7 +56,7 @@ public class Menu_reportes extends javax.swing.JFrame {
                 jb_jugadoresActionPerformed(evt);
             }
         });
-        getContentPane().add(jb_jugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 101, 130, 66));
+        getContentPane().add(jb_jugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 101, 160, 66));
 
         jb_ranking.setText("Ranking Jugadores");
         jb_ranking.addActionListener(new java.awt.event.ActionListener() {
@@ -69,7 +70,7 @@ public class Menu_reportes extends javax.swing.JFrame {
         ta_pantalla.setRows(5);
         jScrollPane1.setViewportView(ta_pantalla);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 304, 265));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 430, 265));
 
         jb_regresar.setText("Regresar");
         jb_regresar.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +82,7 @@ public class Menu_reportes extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ghosts_Proyecto/res/45D.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 350));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 350));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

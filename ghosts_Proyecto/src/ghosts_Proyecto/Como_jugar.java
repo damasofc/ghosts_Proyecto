@@ -35,6 +35,7 @@ public class Como_jugar extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -55,11 +56,11 @@ public class Como_jugar extends javax.swing.JFrame {
         jTextArea1.setText("                      \t               JUEGO DE TABLERO “GHOSTS” (FANTASMAS)\n\n-Ghosts es un juego de tablero para 2 jugadores. El juego consiste en una matriz de 6 x 6 que representan\n un castillo embrujado. Cada jugador tiene 8 fantasmas, 4 buenos y 4 malos.\n\n-Los mismos se ponen en las primeras 2 filas del lado del lugador, dejando libres las esquinas ya que \n representan la salida del castillo.\n\n-El jugador contrario NO SABRÁ cual es el fantasma bueno o malo de su oponente hasta que se lo coman.\n-Estos pueden ser colocados por el jugador en el orden en que más gusten.\n\n-El juego se va desarrollando en turnos y cada jugador puede mover un fantasma solo una casilla ya sea \n horizontal o vertical. Pueden comer otro fantasma si se mueven a la casilla donde está.\n\n¿Como se gana?\nPuede suceder en los siguientes escenarios, lo que suceda primero:\n1.\tAquel que SE HA COMIDO o capturado todos los fantasmas buenos de su oponente.\n2. \tAquel al cual LE HAN COMIDO todos sus fantasmas malos.\n3.\tSi se logra llevar un fantasma bueno por la salida del castillo del lado contrario.\n");
         jScrollPane1.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 86, 619, 367));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 86, 690, 367));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ghosts_Proyecto/res/question-mark-background-vector.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 470));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

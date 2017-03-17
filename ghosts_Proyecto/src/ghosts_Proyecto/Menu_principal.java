@@ -36,13 +36,14 @@ public class Menu_principal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Menu Principal");
         jLabel1.setMaximumSize(new java.awt.Dimension(70, 30));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 11, 290, 55));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 290, 55));
 
         jb_JugarGhost.setText("Jugar Ghost");
         jb_JugarGhost.addActionListener(new java.awt.event.ActionListener() {
@@ -50,7 +51,7 @@ public class Menu_principal extends javax.swing.JFrame {
                 jb_JugarGhostActionPerformed(evt);
             }
         });
-        getContentPane().add(jb_JugarGhost, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 120, -1));
+        getContentPane().add(jb_JugarGhost, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 120, -1));
 
         jb_Configuracion.setText("Configuracion");
         jb_Configuracion.addActionListener(new java.awt.event.ActionListener() {
@@ -58,7 +59,7 @@ public class Menu_principal extends javax.swing.JFrame {
                 jb_ConfiguracionActionPerformed(evt);
             }
         });
-        getContentPane().add(jb_Configuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 120, -1));
+        getContentPane().add(jb_Configuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 120, -1));
 
         jb_Reportes.setText("Reportes");
         jb_Reportes.addActionListener(new java.awt.event.ActionListener() {
@@ -66,7 +67,7 @@ public class Menu_principal extends javax.swing.JFrame {
                 jb_ReportesActionPerformed(evt);
             }
         });
-        getContentPane().add(jb_Reportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 120, -1));
+        getContentPane().add(jb_Reportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 120, -1));
 
         jb_Miperfil.setText("Mi Perfil");
         jb_Miperfil.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +75,7 @@ public class Menu_principal extends javax.swing.JFrame {
                 jb_MiperfilActionPerformed(evt);
             }
         });
-        getContentPane().add(jb_Miperfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 120, -1));
+        getContentPane().add(jb_Miperfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 120, -1));
 
         jb_Salir.setText("Cerrar Sesion");
         jb_Salir.addActionListener(new java.awt.event.ActionListener() {
@@ -90,12 +91,12 @@ public class Menu_principal extends javax.swing.JFrame {
                 jb_juegaActionPerformed(evt);
             }
         });
-        getContentPane().add(jb_juega, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 120, -1));
+        getContentPane().add(jb_juega, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 120, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("usuario");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 91, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 91, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ghosts_Proyecto/res/3299645895_19639a3730.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 210));
