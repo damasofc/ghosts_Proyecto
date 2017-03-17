@@ -152,6 +152,10 @@ public class JuegoTablero extends javax.swing.JFrame {
         almacenarPaneles();
         guardarFantasmas(0);
         guardarFantasmas(1);
+        sumaGhosts[0][0] = cantGhosts/2;//suma de fantasmas buenos del player 1
+        sumaGhosts[0][1] = cantGhosts/2;//suma de fantasmas malos del player 1
+        sumaGhosts[1][0] = cantGhosts/2;//suma de fantasmas buenos del player 2
+        sumaGhosts[1][1] = cantGhosts/2;//suma de fantasmas malos del player 1
         if(modoJuego == "Aleatorio"){
             cargarFantasmas(0);
             cargarFantasmas(1);
@@ -166,10 +170,6 @@ public class JuegoTablero extends javax.swing.JFrame {
             jBt_colocar.setVisible(true);
             this.setVisible(true);
         }
-        sumaGhosts[0][0] = cantGhosts/2;//suma de fantasmas buenos del player 1
-        sumaGhosts[0][1] = cantGhosts/2;//suma de fantasmas malos del player 1
-        sumaGhosts[1][0] = cantGhosts/2;//suma de fantasmas buenos del player 2
-        sumaGhosts[1][1] = cantGhosts/2;//suma de fantasmas malos del player 1
         this.pack();
         
         
@@ -574,13 +574,18 @@ public class JuegoTablero extends javax.swing.JFrame {
         jBt_Retirarse = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(916, 630));
         setResizable(false);
         setSize(new java.awt.Dimension(840, 750));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1022,6 +1027,10 @@ public class JuegoTablero extends javax.swing.JFrame {
             pasoColoc = true;
         }
     }//GEN-LAST:event_jBt_colocarActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+
+    }//GEN-LAST:event_formWindowClosed
 
 
     public static void main(String args[]) {;

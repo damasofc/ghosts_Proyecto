@@ -132,8 +132,9 @@ public class Menu_principal extends javax.swing.JFrame {
 
     private void jb_JugarGhostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_JugarGhostActionPerformed
         p2 =new Player_2();
-        p2.setVisible(true);
         this.dispose();
+        p2.setVisible(true);
+
     }//GEN-LAST:event_jb_JugarGhostActionPerformed
 
     
