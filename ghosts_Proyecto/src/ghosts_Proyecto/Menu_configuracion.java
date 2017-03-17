@@ -51,6 +51,11 @@ public class Menu_configuracion extends javax.swing.JFrame {
         getContentPane().add(jcb_dificultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 73, 99, -1));
 
         jcb_modo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aleatorio", "Normal" }));
+        jcb_modo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcb_modoActionPerformed(evt);
+            }
+        });
         getContentPane().add(jcb_modo, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 99, 99, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -73,6 +78,8 @@ public class Menu_configuracion extends javax.swing.JFrame {
     private void jb_regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_regresarActionPerformed
         
         String Dificultad = jcb_dificultad.getSelectedItem().toString();
+        String modo = jcb_modo.getSelectedItem().toString();
+        
         //condiciones dificultad
         if("Normal".equals(Dificultad)){
             JuegoTablero.dificulty = 8;
@@ -83,6 +90,13 @@ public class Menu_configuracion extends javax.swing.JFrame {
         else if("Genius".equals(Dificultad)){
             JuegoTablero.dificulty = 2;
         }
+        //condiciones modo de juego
+        if("Aleatorio".equals(modo)){
+            JuegoTablero.modoJuego = "Aleatorio";
+        }
+        else if("Normal".equals(modo)){
+            JuegoTablero.modoJuego = "Normal";
+        }
        
         Menu_principal mp=new Menu_principal();
         mp.setVisible(true);
@@ -91,7 +105,12 @@ public class Menu_configuracion extends javax.swing.JFrame {
 
     private void jcb_dificultadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_dificultadActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jcb_dificultadActionPerformed
+
+    private void jcb_modoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_modoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcb_modoActionPerformed
 
     
     public static void main(String args[]) {
