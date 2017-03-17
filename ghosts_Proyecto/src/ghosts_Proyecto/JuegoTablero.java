@@ -36,7 +36,7 @@ public class JuegoTablero extends javax.swing.JFrame {
     public static String lastGhost = " ";
 //esta variable es la que hara que si es Aleatorio, pues pondra los fantasmitas de manera aletoria, pero
 // si es Normal, entonces los fantasmitas los colocara cada uno de los players, donde ellos quieran
-    public static String modoJuego = "Aleatorio";
+    public static String modoJuego = "Aleatori";
     
 
     public void almacenarPaneles(){
@@ -904,11 +904,15 @@ public class JuegoTablero extends javax.swing.JFrame {
                 if(comprobarCargFantas(contUsu) == true && comprobarSHF() == false){
                     Tablero[filColocar][columColocar + 1].add(ghosts[0][contColocar-1]);
                     this.pack();
+                    if(contColocar == 1){
+                    JOptionPane.showMessageDialog(null,"Para continuar de click nuevamente\nen el boton colocar fantasmas, \nhasta haber colocado los\n "+ cantGhosts + " fantasmas que debe colocar","Info.",JOptionPane.INFORMATION_MESSAGE);
+                    }
                     Ghosts.paso = false;
                     pasoColoc = false;
                     if(contColocar >= cantGhosts){
-                    contColocar = 0;
-                    contUsu = 1;
+                        JOptionPane.showMessageDialog(null,"Ahora " + Player_2.usuarioActivo2.getNombUsuario() + " de click en el boton colocar fantasmas\n y siga las instrucciones","Modo de juego:Normal",JOptionPane.INFORMATION_MESSAGE);
+                        contColocar = 0;
+                        contUsu = 1;
                     }
                 }
                 else{
@@ -920,6 +924,9 @@ public class JuegoTablero extends javax.swing.JFrame {
                 if(comprobarCargFantas(contUsu) == true && comprobarSHF() == false){
                     Tablero[5-filColocar][columColocar + 1].add(ghosts[1][contColocar-1]);
                     this.pack();
+                    if(contColocar==1){
+                    JOptionPane.showMessageDialog(null,"Para continuar de click nuevamente\nen el boton colocar fantasmas, \nhasta haber colocado los\n "+ cantGhosts + " fantasmas que debe colocar","Info.",JOptionPane.INFORMATION_MESSAGE);
+                    }
                     Ghosts.paso = false;
                     pasoColoc = false;
                     if(contColocar >= cantGhosts){
@@ -951,21 +958,26 @@ public class JuegoTablero extends javax.swing.JFrame {
 
     private void jBt_RetirarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBt_RetirarseActionPerformed
         String reporte= "";
-        if(playerTurno % 2 == 0){
-            JOptionPane.showMessageDialog(null, Menu_InicioSesion.UsuarioActivo.getNombUsuario()+" Gano, porque " + Player_2.usuarioActivo2.getNombUsuario() +" se retiro","Retirado",JOptionPane.INFORMATION_MESSAGE);
-            reporte = Menu_InicioSesion.UsuarioActivo.getNombUsuario()+" Gano, porque " + Player_2.usuarioActivo2.getNombUsuario() +" se retiro";
-            Menu_InicioSesion.UsuarioActivo.setPuntos(Menu_InicioSesion.UsuarioActivo.getPuntos() + 3);
-            aggReporte(reporte,Menu_InicioSesion.UsuarioActivo.getNombUsuario(), Player_2.usuarioActivo2.getNombUsuario());
-        }
-        else{
-            JOptionPane.showMessageDialog(null,Player_2.usuarioActivo2.getNombUsuario()+" Gano, porque " + Menu_InicioSesion.UsuarioActivo.getNombUsuario() +" se retiro","Retirado",JOptionPane.INFORMATION_MESSAGE);
-            reporte = Player_2.usuarioActivo2.getNombUsuario()+" Gano, porque " + Menu_InicioSesion.UsuarioActivo.getNombUsuario() +" se retiro";
-            Player_2.usuarioActivo2.setPuntos(Player_2.usuarioActivo2.getPuntos() + 3);
-            aggReporte(reporte,Menu_InicioSesion.UsuarioActivo.getNombUsuario(), Player_2.usuarioActivo2.getNombUsuario());
-        }
-        playerTurno = 1;
-        this.dispose();
-        Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
+        String name = playerTurno%2 == 0?Player_2.usuarioActivo2.getNombUsuario():Menu_InicioSesion.UsuarioActivo.getNombUsuario();
+        int opc = JOptionPane.showConfirmDialog(null,"En verdad desea retirarse " + name, "NO",JOptionPane.OK_OPTION);
+        if(opc ==  0){
+            if(playerTurno % 2 == 0){
+                JOptionPane.showMessageDialog(null, Menu_InicioSesion.UsuarioActivo.getNombUsuario()+" Gano, porque " + Player_2.usuarioActivo2.getNombUsuario() +" se retiro","Retirado",JOptionPane.INFORMATION_MESSAGE);
+                reporte = Menu_InicioSesion.UsuarioActivo.getNombUsuario()+" Gano, porque " + Player_2.usuarioActivo2.getNombUsuario() +" se retiro";
+                Menu_InicioSesion.UsuarioActivo.setPuntos(Menu_InicioSesion.UsuarioActivo.getPuntos() + 3);
+                aggReporte(reporte,Menu_InicioSesion.UsuarioActivo.getNombUsuario(), Player_2.usuarioActivo2.getNombUsuario());
+            }
+            else{
+                JOptionPane.showMessageDialog(null,Player_2.usuarioActivo2.getNombUsuario()+" Gano, porque " + Menu_InicioSesion.UsuarioActivo.getNombUsuario() +" se retiro","Retirado",JOptionPane.INFORMATION_MESSAGE);
+                reporte = Player_2.usuarioActivo2.getNombUsuario()+" Gano, porque " + Menu_InicioSesion.UsuarioActivo.getNombUsuario() +" se retiro";
+                Player_2.usuarioActivo2.setPuntos(Player_2.usuarioActivo2.getPuntos() + 3);
+                aggReporte(reporte,Menu_InicioSesion.UsuarioActivo.getNombUsuario(), Player_2.usuarioActivo2.getNombUsuario());
+            }
+            playerTurno = 1;
+            this.dispose();
+            Menu_InicioSesion.mp.setVisible(true);//aca llamo a la ventana Menu_inicio sesion
+        }    
+        
     }//GEN-LAST:event_jBt_RetirarseActionPerformed
 //esta variable pasoColoc, es la que definira si se hace algo al dar click en una posicion o no
     boolean pasoColoc = false;
@@ -976,11 +988,11 @@ public class JuegoTablero extends javax.swing.JFrame {
     private void jBt_colocarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBt_colocarActionPerformed
         if(contUsu == 0 && contColocar <= cantGhosts){
             if(contColocar == 0){
-                JOptionPane.showMessageDialog(null,Menu_InicioSesion.UsuarioActivo.getNombUsuario()+" Porfavor agregue los fantasmas en la posicion que usted quiera","Colocar",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,Menu_InicioSesion.UsuarioActivo.getNombUsuario()+" Porfavor agregue los fantasmas en la posicion que usted quiera,\nSolamente en las primeras 2 filas de arriba hacia abajo","Colocar",JOptionPane.INFORMATION_MESSAGE);
             }    
             Ghosts gh = (Ghosts) ghosts[contUsu][contColocar];
             String tipofant = gh.getTipFantas();
-            JOptionPane.showMessageDialog(null,"Este es un fantasma "+ tipofant +" porfavor haga click donde desea colocarlo, solo en las primeras 2 filas","Colocar",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Este es un fantasma "+ tipofant +" porfavor haga click donde desea colocarlo, solo en las primeras 2 filas de arriba hacia abajo","Colocar",JOptionPane.INFORMATION_MESSAGE);
             contColocar += 1;
             Ghosts.paso = true;
             pasoColoc = true;
@@ -988,11 +1000,11 @@ public class JuegoTablero extends javax.swing.JFrame {
         
         else if(contUsu == 1 && contColocar <= cantGhosts){
             if(contColocar == 0){
-                JOptionPane.showMessageDialog(null,Player_2.usuarioActivo2.getNombUsuario()+" Porfavor agregue los fantasmas en la posicion que usted quiera","Colocar",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,Player_2.usuarioActivo2.getNombUsuario()+" Porfavor agregue los fantasmas en la posicion que usted quiera,\n en las 2 primeras filas de abajo hacia arriba","Colocar",JOptionPane.INFORMATION_MESSAGE);
             } 
             Ghosts gh = (Ghosts) ghosts[contUsu][contColocar];
             String tipofant = gh.getTipFantas();
-            JOptionPane.showMessageDialog(null,"Este es un fantasma "+ tipofant +" porfavor haga click donde desea colocarlo, solo en las primeras 2 filas","Colocar",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Este es un fantasma "+ tipofant +" porfavor haga click donde desea colocarlo, solo en las primeras 2 filas de abajo hacia arriba","Colocar",JOptionPane.INFORMATION_MESSAGE);
             contColocar += 1;
             Ghosts.paso = true;
             pasoColoc = true;

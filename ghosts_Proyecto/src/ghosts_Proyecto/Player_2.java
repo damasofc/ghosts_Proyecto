@@ -107,15 +107,24 @@ public class Player_2 extends javax.swing.JFrame {
             for (int x = 0; x < 100; x++) {
                 String a = MainProyecto.usuarios[x].getNombUsuario();
                 if (a.equals(tf_nom2.getText())) {
-                    usuarioActivo2 = MainProyecto.usuarios[x];
+                    if(a.equals(Menu_InicioSesion.UsuarioActivo.getNombUsuario())){
+                        JOptionPane.showMessageDialog(null,"Ha ingresado el mismo usuario que ya inicio sesion\nPorfavor escriba otro usuario","Error",JOptionPane.ERROR_MESSAGE);
+                        break;
+                    }
+                    else{
+                        usuarioActivo2 = MainProyecto.usuarios[x];
+                        nm = new JuegoTablero();
+                        this.dispose();
+                        nm.setVisible(true);
+                        if(JuegoTablero.modoJuego == "Aleatorio"){
+                            JOptionPane.showMessageDialog(null,"Los fantasmas de "+Menu_InicioSesion.UsuarioActivo.getNombUsuario()
+                                    + " son los blancos \ny los de "+Player_2.usuarioActivo2.getNombUsuario()+ " son los negros","Informacion",JOptionPane.INFORMATION_MESSAGE);
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null,"Porfavor haga click en el boton Colocar fantasmas y siga las instrucciones","Modo de juego: Normal",JOptionPane.INFORMATION_MESSAGE);
+                        }
+                    }
                 }
-            }
-            nm = new JuegoTablero();
-            this.dispose();
-            nm.setVisible(true);
-            if(JuegoTablero.modoJuego == "Aleatorio"){
-                JOptionPane.showMessageDialog(null,"Los fantasmas de "+Menu_InicioSesion.UsuarioActivo.getNombUsuario()
-                        + " son los blancos \ny los de "+Player_2.usuarioActivo2.getNombUsuario()+ " son los negros","Informacion",JOptionPane.INFORMATION_MESSAGE);
             }
         } 
         else{
