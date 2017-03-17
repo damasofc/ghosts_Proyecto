@@ -77,22 +77,27 @@ public class Menu_InicioSesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_entrarActionPerformed
-//*********Aca se comprueba si el usuario y contrasena ingresadas son de algun usuario almacenado*******8888
-        boolean comprobar = MainProyecto.comprobarUsuarioIni(jtf_usuario.getText(), psw_contra.getText());
-//********aca comprueba si es true y el usuario ingreso bien la contrasena y el usuario entncs muestra un mensaje que dice que inicio sesion      
-        if(comprobar == true){
-            int posicionUsuario = MainProyecto.comprobarPosicionUsuario(jtf_usuario.getText());
-            UsuarioActivo = MainProyecto.usuarios[posicionUsuario];
-            mp = new Menu_principal();//aca creo un nuevo objeto de la clase inicio_sesion
-            JOptionPane.showMessageDialog(null,"Has iniciado sesion","Excelente",JOptionPane.INFORMATION_MESSAGE);
-            mp.setVisible(true);
-            this.dispose();
+        if(jtf_usuario.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Usuario o contraseña invalidos\nPorfavor ingrese datos correctos","Error",JOptionPane.ERROR_MESSAGE);
         }
-        //******** y en caso de que ingreso mal algunos de los 2 datos, entonces dice invalido
-        else if(comprobar == false){
-                JOptionPane.showMessageDialog(null,"Usuario o contraseña invalidos","Error",JOptionPane.ERROR_MESSAGE);
+        else{
+    //*********Aca se comprueba si el usuario y contrasena ingresadas son de algun usuario almacenado*******8888
+            boolean comprobar = MainProyecto.comprobarUsuarioIni(jtf_usuario.getText(), psw_contra.getText());
+    //********aca comprueba si es true y el usuario ingreso bien la contrasena y el usuario entncs muestra un mensaje que dice que inicio sesion      
+            if(comprobar == true){
+                int posicionUsuario = MainProyecto.comprobarPosicionUsuario(jtf_usuario.getText());
+                UsuarioActivo = MainProyecto.usuarios[posicionUsuario];
+                mp = new Menu_principal();//aca creo un nuevo objeto de la clase inicio_sesion
+                JOptionPane.showMessageDialog(null,"Has iniciado sesion","Excelente",JOptionPane.INFORMATION_MESSAGE);
+                mp.setVisible(true);
+                this.dispose();
+            }
+            //******** y en caso de que ingreso mal algunos de los 2 datos, entonces dice invalido
+            else if(comprobar == false){
+                    JOptionPane.showMessageDialog(null,"Usuario o contraseña invalidos","Error",JOptionPane.ERROR_MESSAGE);
 
-       }
+           }
+        }    
         //******estos 2 de aca abajo hacen que luego de ingresar los datos y luego que haya ingresado el nuevo usuario entonces borre lo escrito en los textfiel
        jtf_usuario.setText("");
        psw_contra.setText("");
