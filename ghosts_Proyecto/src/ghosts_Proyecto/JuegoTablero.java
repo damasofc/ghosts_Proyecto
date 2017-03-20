@@ -248,7 +248,7 @@ public class JuegoTablero extends javax.swing.JFrame {
             if(MainProyecto.usuarios[i].getNombUsuario().equals(name1) && contador == 0){
                 for(int x = 0 ; x < 10;x++){
                     String reporte = MainProyecto.usuarios[i].getReporte(x);
-                    if(reporte == ""){
+                    if(reporte.equals("")){
                         MainProyecto.usuarios[i].setReporte(report, x);
                         contador += 1;
                         break;
