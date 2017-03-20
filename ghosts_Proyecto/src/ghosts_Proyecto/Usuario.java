@@ -15,6 +15,9 @@ public class Usuario{
         this.nombUsuario = nomb;
         this.contra = contra;
         this.puntos = 0;
+        for(int m = 0 ; m < 10 ; m++){
+                this.reportes[m] = "";
+            }
 
     }
 

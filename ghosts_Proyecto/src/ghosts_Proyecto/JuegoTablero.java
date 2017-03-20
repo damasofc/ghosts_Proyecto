@@ -387,7 +387,7 @@ public class JuegoTablero extends javax.swing.JFrame {
                                         String Pierde = playerTurno%2 == 0?Menu_InicioSesion.UsuarioActivo.getNombUsuario():Player_2.usuarioActivo2.getNombUsuario();
                                         JOptionPane.showMessageDialog(null,Gana + " le ha ganado a "+Pierde +" porque ha sacado un fantasma bueno, por la esquina contraria" ,"Ganador",JOptionPane.INFORMATION_MESSAGE);
                                         smsReporte = Gana + " le ha ganado a "+Pierde +" porque ha sacado un fantasma bueno, por la esquina contraria";
-                                        aggReporte(smsReporte, Gana, Pierde);
+                                        aggReporte(smsReporte,Menu_InicioSesion.UsuarioActivo.getNombUsuario(),Player_2.usuarioActivo2.getNombUsuario());
                                         if(Gana == Player_2.usuarioActivo2.getNombUsuario()){
                                             Player_2.usuarioActivo2.setPuntos(Player_2.usuarioActivo2.getPuntos() + 3);
                                         }

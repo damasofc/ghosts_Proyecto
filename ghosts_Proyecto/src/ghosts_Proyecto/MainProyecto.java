@@ -23,9 +23,6 @@ public class MainProyecto {
  */
         for (int i = 0; i < 100; i++) {
             usuarios[i] = new Usuario("","");
-            for(int m = 0 ; m < 10 ; m++){
-                usuarios[i].setReporte("", m);
-            }
         }       
         contador = 0;//este es el contador que inicialize arriba, aca le asigno valor
         m.setVisible(true);//aca llamo para que sea visible el Menu de incio y aparezca.

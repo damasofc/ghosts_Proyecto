@@ -147,6 +147,7 @@ public class Menu_reportes extends javax.swing.JFrame {
                 continue;
             }
             ta_pantalla.append("\n"+a+". "+Menu_InicioSesion.UsuarioActivo.getReporte(i));
+            System.out.println(Menu_InicioSesion.UsuarioActivo.getReporte(i));
             a++;
         }
     }//GEN-LAST:event_jb_jugadoresActionPerformed

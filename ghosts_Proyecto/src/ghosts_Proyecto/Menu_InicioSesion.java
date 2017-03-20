@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 
 public class Menu_InicioSesion extends javax.swing.JFrame {
-    public static Usuario  UsuarioActivo = new Usuario(" ", " ");
+    public static Usuario  UsuarioActivo;
     public static Menu_principal mp ;//aca creo un objeto de la clase inicio_sesion
 
     public Menu_InicioSesion() {
